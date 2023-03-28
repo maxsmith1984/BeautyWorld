@@ -1,0 +1,35 @@
+{
+  "name": "beautyworld",
+  "version": "1.0.0",
+  "description": "Салчак Максим",
+  "main": "index.js",
+  "scripts": {
+    "start": "gulp",
+    "build": "gulp build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maxsmith1984/BeautyWorld.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/maxsmith1984/BeautyWorld/issues"
+  },
+  "homepage": "https://github.com/maxsmith1984/BeautyWorld#readme",
+  "devDependencies": {
+    "browser-sync": "^2.29.1",
+    "compress-images": "^2.0.5",
+    "gifsicle": "^5.3.0",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^8.0.0",
+    "gulp-clean": "^0.4.0",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-sass": "^5.1.0",
+    "pngquant-bin": "^6.0.0",
+    "sass": "^1.60.0"
+  },
+  "dependencies": {
+    "gulp-concat": "^2.6.1"
+  }
+}

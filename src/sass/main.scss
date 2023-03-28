@@ -1,3 +1,5 @@
+@import 'normalize.scss';
+
 html {
     box-sizing: border-box;
 }
@@ -17,50 +19,7 @@ h6 {
     margin: 0;
 }
 
-@font-face {
-    font-family: 'Montserrat';
-    font-weight: 300;
-    font-style: normal;
-    src:
-        url('./fonts/montserrat_light.woff2') format('woff2'),
-        url('./fonts/montserrat_light.woff') format('woff');
-}
-
-@font-face {
-    font-family: 'Montserrat';
-    font-weight: 400;
-    font-style: normal;
-    src:
-        url('fonts/montserrat_regular.woff2') format('woff2'),
-        url('fonts/montserrat_regular.woff') format('woff');
-}
-
-@font-face {
-    font-family: 'Montserrat';
-    font-weight: 500;
-    font-style: normal;
-    src:
-        url('fonts/montserrat_medium.woff2') format('woff2'),
-        url('fonts/montserrat_medium.woff') format('woff');
-}
-
-@font-face {
-    font-family: 'Montserrat';
-    font-weight: 600;
-    font-style: normal;
-    src:
-        url('fonts/montserrat_semibold.woff2') format('woff2'),
-        url('fonts/montserrat_semibold.woff') format('woff');
-}
-
-@font-face {
-    font-family: 'Montserrat';
-    font-weight: 700;
-    font-style: normal;
-    src:
-        url('fonts/montserrat_bold.woff2') format('woff2'),
-        url('fonts/montserrat_bold.woff') format('woff');
-}
+@import 'fonts.scss';
 
 body {
     font-family: "Montserrat", "Arial", sans-serif;
@@ -95,7 +54,7 @@ a {
 .header {
     width: 100%;
     height: auto;
-    background: url('image/header/header-bg.jpg') center no-repeat;
+    background: url('../images/dest/header/header-bg.jpg') center no-repeat;
     background-size: cover;
 }
 
@@ -368,7 +327,7 @@ a {
 
     border: 2px solid #fff;
     border-radius: 50%;
-    background: url('./image/icon/arrow-right.svg') no-repeat;
+    background: url('../images/dest/icon/arrow-right.svg') no-repeat;
     background-position: 55%;
 
     opacity: .5;
