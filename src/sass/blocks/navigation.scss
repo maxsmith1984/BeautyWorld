@@ -1,0 +1,28 @@
+.navigation {
+
+    &__list {
+        display: flex;
+
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    &__item:not(:last-child) {
+        margin-right: 28px;
+    }
+
+    &__link {
+        font-weight: 500;
+
+        transition: color .1s linear;
+
+        &:hover {
+            color: #00BF78
+        }
+
+        &--fw {
+            font-weight: 400;
+        }
+    }
+}
