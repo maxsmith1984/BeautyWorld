@@ -10,21 +10,31 @@ html {
     box-sizing: inherit;
 }
 
-@import 'fonts.scss';
-
-@import './blocks/header.scss';
-@import './blocks/navigation.scss';
-@import './blocks/header-phone.scss';
-@import './blocks/social.scss';
-@import './blocks/button.scss';
-
 body {
+    min-width: 320px;
+
     font-family: "Montserrat", "Arial", sans-serif;
     font-weight: 400;
 
     font-size: 14px;
     color: #333333;
 }
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+@import 'fonts.scss';
+
+@import './blocks/header.scss';
+@import './blocks/burger.scss';
+@import './blocks/navigation.scss';
+@import './blocks/social.scss';
+@import './blocks/button.scss';
+
+
+@import './media-query.scss';
 
 .page {
     min-height: 100vh;
@@ -34,14 +44,8 @@ body {
     width: 100%;
     max-width: 1110px;
     margin: 0 auto;
+    padding: 0 10px;
 }
-
-
-a {
-    text-decoration: none;
-    color: inherit;
-}
-
 
 .section {
     margin: 100px 0 20px;
