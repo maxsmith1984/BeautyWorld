@@ -26,6 +26,9 @@
         width: 100%;
 
         padding-top: 30px;
+
+        position: relative;
+        z-index: 2;
     }
 
     &__title {
@@ -138,7 +141,7 @@
 
     &__photo {
         display: block;
-        width: 100%;
+        width: 524px;
         height: auto;
 
         position: relative;

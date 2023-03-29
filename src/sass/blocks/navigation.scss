@@ -4,15 +4,12 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
+        gap: 0px 28px;
 
     }
 
     &__item {
         margin-top: 5px;
-    }
-
-    &__item:not(:last-child) {
-        margin-right: 28px;
     }
 
     &__link {

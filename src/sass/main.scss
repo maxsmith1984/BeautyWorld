@@ -4,12 +4,6 @@ html {
     box-sizing: border-box;
 }
 
-*,
-*:before,
-*:after {
-    box-sizing: inherit;
-}
-
 body {
     min-width: 320px;
 
@@ -18,6 +12,12 @@ body {
 
     font-size: 14px;
     color: #333333;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
 }
 
 a {
