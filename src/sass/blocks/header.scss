@@ -1,6 +1,7 @@
 .header {
     width: 100%;
     height: auto;
+
     background: url('../images/dest/header/header-bg.jpg') center no-repeat;
     background-size: cover;
 }
@@ -20,15 +21,15 @@
 .header {
 
     &__top {
+        position: relative;
+        z-index: 2;
+
         display: flex;
         justify-content: space-between;
         align-items: baseline;
+
         width: 100%;
-
         padding-top: 30px;
-
-        position: relative;
-        z-index: 2;
     }
 
     &__title {
@@ -43,22 +44,22 @@
 
 
     &__content {
-        width: 100%;
+        position: relative;
+
         display: flex;
         align-items: flex-end;
         justify-content: space-between;
 
-        position: relative;
-
+        width: 100%;
         padding: 120px 0 130px;
     }
 
 
     &__preview {
-        width: 60%;
-
         position: relative;
         z-index: 2;
+
+        width: 60%;
     }
 
 
@@ -70,31 +71,58 @@
         overflow: hidden;
 
         &::before {
-            display: block;
             content: "";
+            position: absolute;
+            bottom: -110px;
+            right: 0;
+            z-index: 0;
+
+            display: block;
             width: 472px;
             height: 472px;
 
             background-color: #FB9475;
             border-radius: 50%;
-
-            position: absolute;
-            bottom: -110px;
-            right: 0;
-            z-index: 0;
         }
     }
 
 
     &__social {
         width: 40%;
-
         margin-bottom: 90px;
 
         text-align: right;
     }
 }
 
+.navigation {
+
+    &__list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0px 28px;
+
+    }
+
+    &__item {
+        margin-top: 5px;
+    }
+
+    &__link {
+        font-weight: 500;
+
+        transition: color .1s linear;
+
+        &:hover {
+            color: #00BF78
+        }
+
+        &--fw {
+            font-weight: 400;
+        }
+    }
+}
 
 .header-phone {
 
@@ -140,11 +168,35 @@
 .model {
 
     &__photo {
+        position: relative;
+        z-index: 1;
+
         display: block;
         width: 524px;
         height: auto;
+    }
+}
 
-        position: relative;
-        z-index: 1;
+.social {
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__link {
+        margin-bottom: 16px;
+    }
+
+    &__item {
+        display: inline-block;
+        width: 28px;
+        height: auto;
+
+        transition: opacity .1s linear;
+
+        &:hover {
+            opacity: .8;
+        }
     }
 }

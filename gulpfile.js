@@ -7,6 +7,7 @@ const autoprefixer = require('gulp-autoprefixer');
 const cleancss = require('gulp-clean-css');
 const imagecomp = require('compress-images');
 const clean = require('gulp-clean');
+const sourcemaps = require('gulp-sourcemaps');
 
 
 function browsersync() {
@@ -19,10 +20,12 @@ function browsersync() {
 
 function styles() {
     return src('src/' + preprocessor + '/main.scss')
+        .pipe(sourcemaps.init())
         .pipe(eval(preprocessor)())
         .pipe(concat('app.min.css'))
         .pipe(autoprefixer({ overrideBrowserslist: ['last 2 versions'], grid: true }))
         .pipe(cleancss({ level: { 1: { specialComments: 0 } } }))
+        .pipe(sourcemaps.write())
         .pipe(dest('src/css/'))
         .pipe(browserSync.stream())
 }
@@ -64,9 +67,7 @@ function cleandist() {
 
 function startwatch() {
     watch('src/**/' + preprocessor + '/**/*', styles);
-
     watch('src/**/*.html').on('change', browserSync.reload);
-
     watch('src/images/src/**/*', images);
 }
 

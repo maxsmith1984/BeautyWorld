@@ -24,15 +24,15 @@
 
 @media only screen and (max-width: 768px) {
     .burger {
-        display: block;
-
         position: absolute;
         top: 13px;
         left: 10px;
+
+        display: block;
     }
 
     .header__title {
-        margin-left: 40px;
+        margin-left: 50px;
     }
 
 

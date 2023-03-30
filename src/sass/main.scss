@@ -29,14 +29,14 @@ a {
 
 @import './blocks/header.scss';
 @import './blocks/burger.scss';
-@import './blocks/navigation.scss';
-@import './blocks/social.scss';
 @import './blocks/button.scss';
 
 
-@import './media-query.scss';
+
 
 .page {
+    display: flex;
+    flex-direction: column;
     min-height: 100vh;
 }
 
@@ -215,3 +215,5 @@ a {
 .footer-nav {
     padding: 11px 0;
 }
+
+@import './media-query.scss';
