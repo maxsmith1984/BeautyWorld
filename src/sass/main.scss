@@ -84,9 +84,11 @@ a {
 }
 
 .about-video {
-    margin-top: 100px;
-
     position: relative;
+
+    width: 40%;
+    height: fit-content;
+    margin-top: 100px;
 }
 
 .about-video::before {
@@ -109,6 +111,7 @@ a {
     display: block;
     width: 100%;
     height: auto;
+    border-radius: 10px;
 }
 
 .video__text {
@@ -197,6 +200,10 @@ a {
     font-weight: 400;
     font-size: 12px;
     line-height: 15px;
+}
+
+.footer-copyright {
+    width: fit-content;
 }
 
 .footer-copyright__text {

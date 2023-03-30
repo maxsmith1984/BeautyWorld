@@ -28,18 +28,17 @@
         justify-content: space-between;
         align-items: baseline;
 
-        width: 100%;
         padding-top: 30px;
     }
 
     &__title {
-        white-space: nowrap;
+        min-width: fit-content;
     }
 
 
     &__contact {
+        min-width: fit-content;
         text-align: right;
-        white-space: nowrap;
     }
 
 
@@ -50,7 +49,6 @@
         align-items: flex-end;
         justify-content: space-between;
 
-        width: 100%;
         padding: 120px 0 130px;
     }
 
@@ -71,7 +69,6 @@
         overflow: hidden;
 
         &::before {
-            content: "";
             position: absolute;
             bottom: -110px;
             right: 0;
@@ -83,6 +80,8 @@
 
             background-color: #FB9475;
             border-radius: 50%;
+
+            content: "";
         }
     }
 
@@ -101,13 +100,10 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        gap: 0px 28px;
+        gap: 5px 28px;
 
     }
 
-    &__item {
-        margin-top: 5px;
-    }
 
     &__link {
         font-weight: 500;
