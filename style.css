@@ -2,6 +2,14 @@ html {
     box-sizing: border-box;
 }
 
+body {
+    font-family: "Montserrat", "Arial", sans-serif;
+    font-weight: 400;
+
+    font-size: 14px;
+    color: #333333;
+}
+
 *,
 *:before,
 *:after {
@@ -15,6 +23,11 @@ h4,
 h5,
 h6 {
     margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
 }
 
 @font-face {
@@ -62,13 +75,7 @@ h6 {
         url('fonts/montserrat_bold.woff') format('woff');
 }
 
-body {
-    font-family: "Montserrat", "Arial", sans-serif;
-    font-weight: 400;
 
-    font-size: 14px;
-    color: #333333;
-}
 
 .page {
     display: flex;
@@ -85,13 +92,6 @@ body {
     margin: 0 auto;
 }
 
-
-a {
-    text-decoration: none;
-    color: inherit;
-}
-
-
 .header {
     width: 100%;
     height: auto;
@@ -100,6 +100,9 @@ a {
 }
 
 .header-top {
+    position: relative;
+    z-index: 2;
+
     display: flex;
     justify-content: space-between;
     align-items: baseline;
@@ -108,6 +111,8 @@ a {
 }
 
 .header__title {
+    min-width: fit-content;
+
     font-weight: 700;
     font-size: 24px;
     line-height: 29px;
@@ -119,16 +124,19 @@ a {
     transform: scale(1.05);
 }
 
+.header__navigation {
+    margin: 0 10px;
+}
+
 .navigation__list {
     display: flex;
+    justify-content: center;
+    gap: 5px 28px;
+    flex-wrap: wrap;
 
     list-style: none;
     padding: 0;
     margin: 0;
-}
-
-.navigation__item:not(:last-child) {
-    margin-right: 28px;
 }
 
 .navigation__link {
@@ -146,6 +154,8 @@ a {
 }
 
 .header__contact {
+    min-width: fit-content;
+
     text-align: right;
 }
 
@@ -244,7 +254,7 @@ a {
 
 .preview__photo {
     display: block;
-    width: 100%;
+    width: 524px;
     height: auto;
 
     position: relative;
@@ -317,6 +327,8 @@ a {
 }
 
 .about-video {
+    width: 40%;
+    height: fit-content;
     margin-top: 100px;
 
     position: relative;
@@ -342,6 +354,7 @@ a {
     display: block;
     width: 100%;
     height: auto;
+    border-radius: 10px;
 }
 
 .video__text {
@@ -432,11 +445,16 @@ a {
     line-height: 15px;
 }
 
+.footer-copyright {
+    width: fit-content;
+}
+
 .footer-copyright__text {
     margin-bottom: 8px;
 }
 
 .footer-copyright__politics {
+    white-space: nowrap;
     color: #278AFF;
     text-decoration: underline;
 }
