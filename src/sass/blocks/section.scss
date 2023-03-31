@@ -1,5 +1,9 @@
 .section {
     padding: 100px 0 20px;
+
+    @include breakpoint($small-devices) {
+        padding: 50px 0 10px;
+    }
 }
 
 .section {
@@ -10,6 +14,12 @@
         font-weight: 700;
         font-size: 48px;
         line-height: 59px;
+
+        @include breakpoint($small-devices) {
+            margin-bottom: 16px;
+
+            font-size: 42px;
+        }
     }
 
 }
@@ -18,6 +28,11 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 90px;
+
+    @include breakpoint($small-devices2) {
+        margin-bottom: 45px;
+        flex-direction: column;
+    }
 }
 
 .about {
@@ -25,6 +40,15 @@
     &__description {
         width: 49%;
         margin-bottom: 32px;
+
+        @include breakpoint($small-devices) {
+            width: 54%;
+            margin-bottom: 16px;
+        }
+
+        @include breakpoint($small-devices2) {
+            width: 100%;
+        }
     }
 
 
@@ -33,12 +57,31 @@
 
         font-size: 20px;
         line-height: 32px;
+
+        @include breakpoint($small-devices2) {
+            text-align: justify;
+        }
+
+        @include breakpoint($phones) {
+            font-size: 18px;
+            line-height: 26px;
+            text-align: justify;
+        }
     }
 
 
     &__moretext {
         font-size: 16px;
         line-height: 26px;
+
+        @include breakpoint($small-devices2) {
+            text-align: justify;
+        }
+
+        @include breakpoint($phones) {
+            font-size: 14px;
+            line-height: 22px;
+        }
     }
 
 
@@ -48,6 +91,14 @@
         width: 40%;
         height: fit-content;
 
+        @include breakpoint($small-devices) {
+            width: 45%;
+        }
+
+        @include breakpoint($small-devices2) {
+            width: 70%;
+            margin: 0 auto;
+        }
 
         &:before {
             position: absolute;
@@ -64,6 +115,7 @@
             opacity: .2;
 
             content: "";
+
         }
     }
 }
@@ -91,6 +143,16 @@
 
         transform: translate(-50%, -50%);
 
+        @include breakpoint($small-devices) {
+            font-size: 14px;
+        }
+
+        @include breakpoint($phones) {
+            top: 60%;
+
+            font-size: 0;
+        }
+
         &:before {
             position: relative;
 
@@ -101,19 +163,24 @@
 
             border: 2px solid #fff;
             border-radius: 50%;
-            background: url('../images/dest/icon/arrow-right.svg') no-repeat;
-            background-position: 55%;
+            background: url('../images/dest/icon/arrow-right.svg') 56% no-repeat;
 
             opacity: .5;
-            transition: all .2s linear;
+            transition: transform .2s ease-in-out;
 
             content: "";
             cursor: pointer;
 
+            @include breakpoint($small-devices) {
+                width: 50px;
+                height: 50px;
+            }
+
         }
 
         &:hover.video__text:before {
-            transform: scale(1.1);
+            transform: scale(1.05);
+
         }
     }
 }
@@ -131,6 +198,19 @@
         padding: 10px 48px;
 
         text-align: center;
+
+        @include breakpoint($small-devices) {
+            padding: 10px;
+        }
+
+        @include breakpoint($small-devices2) {
+            width: 50%;
+        }
+
+        @include breakpoint($small-phones) {
+            width: 100%;
+            padding: 0;
+        }
 
         &:last-child {
             margin-right: 0;
@@ -151,6 +231,10 @@
         font-weight: 600;
         font-size: 18px;
         line-height: 22px;
+
+        @include breakpoint($small-devices) {
+            margin: 18px 0 12px;
+        }
     }
 
     &__text {
