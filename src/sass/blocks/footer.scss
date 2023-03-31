@@ -1,0 +1,36 @@
+.footer {
+    margin-top: auto;
+}
+
+.footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 20px 0;
+
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+}
+
+.footer-copyright {
+    width: fit-content;
+}
+
+.footer-copyright__text {
+    margin-bottom: 8px;
+}
+
+.footer-copyright__politics {
+    color: #278AFF;
+    text-decoration: underline;
+}
+
+.footer-copyright__politics:hover {
+    text-decoration: none;
+}
+
+.footer-nav {
+    padding: 11px 0;
+}
