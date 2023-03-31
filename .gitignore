@@ -1,11 +1,4 @@
-<<<<<<< HEAD
 /dist
 /node_modules
 /src/css
 package-lock.json
-=======
-dist
-node_modules
-src
-package-lock.json
->>>>>>> main
