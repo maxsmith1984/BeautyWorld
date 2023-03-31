@@ -2,35 +2,50 @@
     margin-top: auto;
 }
 
-.footer-inner {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.footer {
+    &__inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 0;
 
-    padding: 20px 0;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 15px;
 
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 15px;
+        @include breakpoint($phones) {
+            justify-content: center;
+
+            text-align: center;
+        }
+    }
+
+    &__copyright {
+        width: fit-content;
+    }
+
+    &__navigation {
+        padding: 11px 0;
+
+        @include breakpoint($phones) {
+            display: none;
+        }
+    }
 }
 
-.footer-copyright {
-    width: fit-content;
-}
+.copyright {
 
-.footer-copyright__text {
-    margin-bottom: 8px;
-}
+    &__text {
+        margin-bottom: 8px;
+    }
 
-.footer-copyright__politics {
-    color: #278AFF;
-    text-decoration: underline;
-}
+    &__politics {
+        color: #278AFF;
+        text-decoration: underline;
 
-.footer-copyright__politics:hover {
-    text-decoration: none;
-}
+        &:hover {
+            text-decoration: none;
+        }
 
-.footer-nav {
-    padding: 11px 0;
+    }
 }

@@ -12,6 +12,13 @@
 
     transform: translateY(-50%);
 
+    @include breakpoint($small-devices2) {
+        position: absolute;
+        top: 13px;
+        left: 10px;
+
+        display: block;
+    }
 
     &::before,
     &::after,

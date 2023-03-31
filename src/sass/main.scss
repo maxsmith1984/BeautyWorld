@@ -1,4 +1,5 @@
-@import './libs/reset.scss';
+@import 'libs/reset.scss';
+@import 'mixins.scss';
 
 html {
     box-sizing: border-box;
@@ -40,10 +41,8 @@ a {
 
 @import 'fonts.scss';
 
-@import './blocks/header.scss';
-@import './blocks/burger.scss';
-@import './blocks/button.scss';
-@import './blocks/section.scss';
-@import './blocks/footer.scss';
-
-@import './media-query.scss';
+@import 'blocks/header.scss';
+@import 'blocks/burger.scss';
+@import 'blocks/button.scss';
+@import 'blocks/section.scss';
+@import 'blocks/footer.scss';
