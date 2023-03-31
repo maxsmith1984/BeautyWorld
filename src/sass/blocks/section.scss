@@ -241,3 +241,53 @@
         line-height: 22px;
     }
 }
+
+.card {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 48px 20px;
+
+    @include breakpoint($medium-devices) {
+        justify-content: center;
+    }
+
+}
+
+.card {
+
+    &__preview {
+        display: block;
+        height: 180px;
+    }
+
+    &__image {
+        display: block;
+        width: 350px;
+        height: 100%;
+        object-fit: cover;
+
+        border-radius: 8px;
+
+        @include breakpoint($phones) {
+            width: 300px;
+        }
+    }
+
+    &__title {
+        margin-top: 20px;
+
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 22px;
+    }
+
+    &__description {
+        margin-top: 8px;
+        margin-bottom: 16px;
+
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 20px;
+    }
+}
