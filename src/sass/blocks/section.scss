@@ -25,6 +25,10 @@
 
         &--pdt {
             padding-top: 80px;
+
+            @include breakpoint($phones) {
+                padding-top: 50px;
+            }
         }
     }
 
@@ -355,8 +359,6 @@
         justify-content: space-between;
         width: 40%;
 
-
-
         @include breakpoint($small-devices3) {
             width: 80%;
         }
@@ -393,25 +395,29 @@
 
 .masters {
 
-    // .masters__about
-
     &__about {
         font-size: 16px;
         line-height: 20px;
     }
 
-    // .masters__inner
-
     &__inner {
         display: flex;
         justify-content: space-between;
         flex-wrap: wrap;
-        gap: 20px;
-
+        gap: 20px 0;
 
         margin-top: 24px;
         padding-bottom: 80px;
+
+        @include breakpoint($medium-devices) {
+            justify-content: center;
+            gap: 20px;
+        }
     }
+}
+
+.card-master {
+    flex-basis: 25%;
 }
 
 .card-master {
@@ -440,7 +446,6 @@
         }
 
 
-
         &:hover .card-master__enroll {
             opacity: 1;
         }
@@ -451,7 +456,6 @@
 
     }
 
-    // .card-master__photo
 
     &__photo {
         position: relative;
@@ -464,7 +468,6 @@
         border-radius: 8px;
     }
 
-    // .card-master__enroll
 
     &__enroll {
         position: absolute;
@@ -483,34 +486,29 @@
 
     }
 
-    // .card-master__name
 
     &__name {
         margin-top: 20px;
+        padding-right: 10px;
 
         font-weight: 600;
         font-size: 18px;
         line-height: 22px;
     }
 
-    // .card-master__prof
-
     &__prof {
         margin-top: 8px;
-        padding-right: 20px;
 
-        line-height: 17px;
+        line-height: 16px;
     }
 
-    // .card-master__experience
 
     &__experience {
         margin-top: 20px;
-        padding-right: 20px;
 
         font-weight: 300;
         font-size: 12px;
-        line-height: 15px;
+        line-height: 14px;
         text-transform: uppercase;
     }
 }

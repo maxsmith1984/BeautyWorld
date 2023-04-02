@@ -9,7 +9,7 @@
 .logo {
     font-weight: 700;
     font-size: 24px;
-    line-height: 29px;
+    line-height: 28px;
 
     transition: transform .1s linear;
 
@@ -218,7 +218,7 @@
 
         font-weight: 600;
         font-size: 48px;
-        line-height: 59px;
+        line-height: 58px;
 
         @include breakpoint($phones) {
             font-size: 35px;
@@ -232,8 +232,6 @@
 
         font-size: 20px;
         line-height: 24px;
-
-
     }
 
 }

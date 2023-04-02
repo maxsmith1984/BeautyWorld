@@ -11,9 +11,9 @@
 
         font-weight: 400;
         font-size: 12px;
-        line-height: 15px;
+        line-height: 14px;
 
-        @include breakpoint($phones) {
+        @include breakpoint($small-devices3) {
             justify-content: center;
 
             text-align: center;
@@ -27,7 +27,7 @@
     &__navigation {
         padding: 11px 0;
 
-        @include breakpoint($phones) {
+        @include breakpoint($small-devices3) {
             display: none;
         }
     }
@@ -40,12 +40,12 @@
     }
 
     &__politics {
+        white-space: nowrap;
         color: #278AFF;
         text-decoration: underline;
 
         &:hover {
             text-decoration: none;
         }
-
     }
 }
