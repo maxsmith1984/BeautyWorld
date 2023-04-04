@@ -26,3 +26,34 @@
         font-size: 12px;
     }
 }
+
+.carousel-nav {
+
+    &__btn {
+        display: inline-block;
+        padding: 20px;
+
+
+        border: none;
+        background: none;
+        border-radius: 50%;
+
+        cursor: pointer;
+        transition: background-color .2s ease-in-out;
+
+        &--prev {
+            margin-right: 16px;
+
+            background: url('../images/dest/icon/prev.svg') center no-repeat;
+        }
+
+        &--next {
+            background: url('../images/dest/icon/next.svg') center no-repeat;
+        }
+
+
+        &:hover {
+            background-color: #F8F6F7;
+        }
+    }
+}

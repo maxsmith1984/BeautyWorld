@@ -30,6 +30,12 @@
                 padding-top: 50px;
             }
         }
+
+        &--between {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
     }
 
     &__inner {
@@ -47,6 +53,8 @@
     &--gray {
         background: #F8F6F7;
     }
+
+
 
 }
 
