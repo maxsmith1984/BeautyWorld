@@ -35,6 +35,10 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+
+            @include breakpoint($small-devices) {
+                flex-direction: column;
+            }
         }
     }
 
@@ -44,6 +48,7 @@
         @include breakpoint($small-devices) {
             margin: 16px 0 10px;
         }
+
     }
 
     &__navigation {
@@ -518,5 +523,99 @@
         font-size: 12px;
         line-height: 14px;
         text-transform: uppercase;
+    }
+}
+
+
+.works {
+    display: flex;
+    gap: 29px;
+
+    @include breakpoint($small-devices) {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+.works {
+
+    &__item {
+        position: relative;
+
+        width: 25%;
+        height: 338px;
+
+        cursor: pointer;
+        transition: transform .2s ease-in-out;
+
+        @include breakpoint($small-devices) {
+            width: 40%;
+        }
+
+        @include breakpoint($phones) {
+            width: 80%;
+        }
+
+        &::after {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+
+            display: block;
+            width: 100%;
+            height: 100%;
+
+            border-radius: 8px;
+            background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+
+            content: "";
+            opacity: 0;
+            transition: opacity .2s ease-in-out;
+        }
+
+        &:hover {
+            transform: scale(1.1);
+        }
+
+        &:hover::after {
+            opacity: 1;
+        }
+
+        &:hover .works__closer {
+            opacity: 1;
+        }
+    }
+
+
+    &__img {
+        display: block;
+
+        width: 100%;
+        height: 338px;
+        object-fit: cover;
+
+        border-radius: 8px;
+    }
+
+    &__closer {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        z-index: 2;
+
+        text-align: center;
+
+        transform: translate(-50%, -50%);
+        opacity: 0;
+        transition: opacity .2s ease-in-out;
+    }
+
+    &__text {
+        margin-top: 8px;
+
+        font-weight: 500;
+        line-height: 18px;
+        color: #fff;
     }
 }
