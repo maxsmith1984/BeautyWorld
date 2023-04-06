@@ -690,6 +690,7 @@
 .contacts {
 
     &__inner {
+        width: max-content;
         padding-bottom: 135px;
 
         @include breakpoint($small-devices2) {
@@ -704,6 +705,7 @@
 
     &__tel {
         display: block;
+        width: fit-content;
         margin-top: 20px;
 
         font-size: 16px;
@@ -718,6 +720,7 @@
 
     &__email {
         display: block;
+        width: fit-content;
         margin-top: 20px;
 
         font-size: 16px;
@@ -762,8 +765,6 @@
 
 .form {
 
-    // .form__inner
-
     &__inner {
         width: 445px;
         padding: 40px 35px;
@@ -774,15 +775,12 @@
         }
     }
 
-    // .form__title
 
     &__title {
         font-weight: 600;
         font-size: 18px;
         line-height: 14px;
     }
-
-    // .form__text
 
     &__text {
         width: 100%;
