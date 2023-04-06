@@ -25,7 +25,7 @@
         }
 
         &--center {
-            @include breakpoint($small-devices) {
+            @include breakpoint($small-devices2) {
                 text-align: center;
             }
         }
