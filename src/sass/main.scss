@@ -24,6 +24,10 @@ a {
     color: inherit;
 }
 
+input {
+    display: block;
+}
+
 .page {
     display: flex;
     flex-direction: column;
