@@ -1,6 +1,8 @@
 # BeautyWorld
 Салчак Максим
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/a4538f1d-daba-4886-b0c3-364ff7830aaf/deploy-status)](https://app.netlify.com/sites/beautyworld-max/deploys)
+
 ## Старт
 #### `npm i` – установить зависимости проекта
 #### `npm start` - запустить сборщик в режиме dev
