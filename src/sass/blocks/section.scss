@@ -24,11 +24,6 @@
             text-align: center;
         }
 
-        &--center {
-            @include breakpoint($small-devices2) {
-                text-align: center;
-            }
-        }
     }
 
     &__header {
@@ -66,6 +61,26 @@
             margin: 16px 0 10px;
         }
 
+        &--mt {
+            margin-top: 50px;
+        }
+
+        &--flex {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+
+            margin-top: 0;
+            padding: 40px 95px 40px 0;
+
+            @include breakpoint($medium-devices) {
+                flex-direction: column;
+                align-items: center;
+
+                padding: 40px 0;
+            }
+        }
+
     }
 
     &__navigation {
@@ -76,7 +91,11 @@
         background: #F8F6F7;
     }
 
-
+    &__carousel {
+        @include breakpoint($small-devices) {
+            margin-top: 20px;
+        }
+    }
 
 }
 
@@ -643,10 +662,11 @@
     &__inner {
         display: flex;
         justify-content: center;
+        flex-wrap: wrap;
         align-items: center;
         gap: 10px 70px;
 
-        margin-top: 40px;
+        margin: 40px 0 67px;
 
         @include breakpoint($small-devices2) {
             flex-wrap: wrap;
@@ -677,35 +697,45 @@
 }
 
 .contacts {
-    position: relative;
+    flex-basis: 30%;
 
     @include breakpoint($small-devices2) {
-        position: initial;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        text-align: center;
     }
 }
 
 .contacts {
 
-    &__inner {
-        width: max-content;
-        padding-bottom: 135px;
+    &__title {
+        margin-top: 38px;
 
-        @include breakpoint($small-devices2) {
-            padding-bottom: 35px;
+        font-weight: 700;
+        font-size: 48px;
+        line-height: 58px;
+
+        @include breakpoint($phones) {
+            margin-top: 0;
+
+            text-align: center;
+            font-size: 32px;
+            line-height: 32px;
         }
     }
+
+
+    &__inner {
+        margin: 32px 0 40px;
+    }
+
 
     &__address {
         font-size: 16px;
         line-height: 20px;
     }
 
+
     &__tel {
         display: block;
-        width: fit-content;
         margin-top: 20px;
 
         font-size: 16px;
@@ -720,7 +750,6 @@
 
     &__email {
         display: block;
-        width: fit-content;
         margin-top: 20px;
 
         font-size: 16px;
@@ -743,16 +772,8 @@
     }
 
     &__form {
-        position: absolute;
-        right: 95px;
-        bottom: 40px;
-
         @include breakpoint($small-devices) {
-            right: 0;
-        }
-
-        @include breakpoint($small-devices2) {
-            position: initial;
+            text-align: center;
         }
     }
 }
@@ -768,6 +789,11 @@
     &__inner {
         width: 445px;
         padding: 40px 35px;
+
+        @include breakpoint($small-devices2) {
+            width: 350px;
+            padding: 30px 20px;
+        }
 
         @include breakpoint($phones) {
             width: 290px;
