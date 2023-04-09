@@ -54,7 +54,6 @@
         }
     }
 
-
     &__contact {
         min-width: fit-content;
         text-align: right;
@@ -65,7 +64,6 @@
             text-align: center;
         }
     }
-
 
     &__content {
         position: relative;
@@ -87,7 +85,6 @@
         }
     }
 
-
     &__preview {
         position: relative;
         z-index: 2;
@@ -103,7 +100,6 @@
             margin: 0 auto;
         }
     }
-
 
     &__model {
         position: absolute;
@@ -137,7 +133,6 @@
         }
     }
 
-
     &__social {
         width: 40%;
         margin-bottom: 90px;
@@ -168,7 +163,6 @@
             gap: 20px 28px;
         }
     }
-
 
     &__link {
         font-weight: 500;
@@ -210,7 +204,6 @@
     }
 }
 
-
 .preview {
 
     &__title {
@@ -225,7 +218,6 @@
             line-height: 38px
         }
     }
-
 
     &__text {
         margin-bottom: 59px;
@@ -259,7 +251,7 @@
             justify-content: center;
         }
 
-        &--inline {
+        &_inline {
             flex-direction: row;
             gap: 0 24px;
         }
@@ -272,7 +264,7 @@
             margin: 50px 15px 0;
         }
 
-        &--inline {
+        &_inline {
             margin: 0;
             margin-bottom: 0;
         }
