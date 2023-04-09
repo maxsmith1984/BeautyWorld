@@ -1,0 +1,514 @@
+.section {
+
+    &__title {
+        font-weight: 700;
+        font-size: 48px;
+        line-height: 58px;
+
+        @include breakpoint($small-devices) {
+            font-size: 42px;
+        }
+
+        @include breakpoint($phones) {
+            text-align: center;
+            font-size: 32px;
+            line-height: 32px;
+        }
+    }
+
+    &__header {
+        margin-top: 100px;
+
+        @include breakpoint($small-devices) {
+            margin-top: 50px;
+        }
+
+        &_paddingtop {
+            padding-top: 80px;
+
+            @include breakpoint($phones) {
+                padding-top: 50px;
+            }
+        }
+    }
+
+    &__inner {
+        margin: 32px 0 20px;
+
+        @include breakpoint($small-devices) {
+            margin: 16px 0 10px;
+        }
+    }
+
+    &__navigation {
+        display: flex;
+    }
+
+    &_gray {
+        background: #F8F6F7;
+    }
+
+}
+
+.about {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 90px;
+
+    @include breakpoint($small-devices2) {
+        margin-bottom: 45px;
+        flex-direction: column;
+    }
+}
+
+.about {
+
+    &__description {
+        width: 49%;
+        margin-bottom: 32px;
+
+        @include breakpoint($small-devices) {
+            width: 54%;
+            margin-bottom: 16px;
+        }
+
+        @include breakpoint($small-devices2) {
+            width: 100%;
+        }
+    }
+
+
+    &__text {
+        margin-bottom: 16px;
+
+        font-size: 20px;
+        line-height: 32px;
+
+        @include breakpoint($small-devices2) {
+            text-align: justify;
+        }
+
+        @include breakpoint($phones) {
+            font-size: 18px;
+            line-height: 26px;
+            text-align: justify;
+        }
+    }
+
+
+    &__moretext {
+        font-size: 16px;
+        line-height: 26px;
+
+        @include breakpoint($small-devices2) {
+            text-align: justify;
+        }
+
+        @include breakpoint($phones) {
+            font-size: 14px;
+            line-height: 22px;
+        }
+    }
+
+
+    &__video {
+        position: relative;
+
+        width: 40%;
+        height: fit-content;
+
+        @include breakpoint($small-devices) {
+            width: 45%;
+        }
+
+        @include breakpoint($small-devices2) {
+            width: 70%;
+            margin: 0 auto;
+        }
+
+        &:before {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+
+            display: block;
+            width: 100%;
+            height: 100%;
+
+            border-radius: 10px;
+            background: #000;
+            opacity: .2;
+
+            content: "";
+
+        }
+    }
+}
+
+.video {
+
+    &__file {
+        display: block;
+        width: 100%;
+        height: auto;
+
+        border-radius: 10px;
+    }
+
+    &__text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        z-index: 2;
+
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 26px;
+        color: #fff;
+
+        transform: translate(-50%, -50%);
+
+        @include breakpoint($small-devices) {
+            font-size: 14px;
+        }
+
+        @include breakpoint($phones) {
+            top: 60%;
+
+            font-size: 0;
+        }
+
+        &:before {
+            position: relative;
+
+            display: block;
+            width: 60px;
+            height: 60px;
+            margin: 0 auto;
+
+            border: 2px solid #fff;
+            border-radius: 50%;
+            background: url('../images/dest/icon/arrow-right.svg') 56% no-repeat;
+
+            opacity: .5;
+            transition: transform .2s ease-in-out;
+
+            content: "";
+            cursor: pointer;
+
+            @include breakpoint($small-devices) {
+                width: 50px;
+                height: 50px;
+            }
+
+        }
+
+        &:hover.video__text:before {
+            transform: scale(1.05);
+
+        }
+    }
+}
+
+.about-footer {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.about-footer {
+
+    &__item {
+        width: 33.33%;
+        padding: 10px 48px;
+
+        text-align: center;
+
+        @include breakpoint($small-devices) {
+            padding: 10px;
+        }
+
+        @include breakpoint($small-devices2) {
+            width: 50%;
+        }
+
+        @include breakpoint($small-phones) {
+            width: 100%;
+            padding: 0;
+        }
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+}
+
+.about-item {
+
+    &__img {
+        width: 48px;
+        height: 48px;
+    }
+
+    &__title {
+        margin: 28px 0 12px;
+
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 22px;
+
+        @include breakpoint($small-devices) {
+            margin: 18px 0 12px;
+        }
+    }
+
+    &__text {
+        line-height: 22px;
+    }
+}
+
+.card {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 48px 20px;
+
+    @include breakpoint($medium-devices) {
+        justify-content: center;
+    }
+
+}
+
+.card {
+    &__item {
+        flex-basis: 30%;
+    }
+
+    &__preview {
+        display: block;
+        height: 180px;
+
+        border-radius: 8px;
+
+        overflow: hidden;
+
+        &:hover .card__image {
+            transform: scale(1.1);
+            transition-duration: 3s;
+        }
+    }
+
+    &__image {
+        display: block;
+        width: 350px;
+        height: 100%;
+        object-fit: cover;
+
+        border-radius: 8px;
+
+        @include breakpoint($phones) {
+            width: 300px;
+        }
+    }
+
+    &__title {
+        margin-top: 20px;
+
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 22px;
+    }
+
+    &__description {
+        margin-top: 8px;
+        margin-bottom: 16px;
+
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 20px;
+    }
+}
+
+.tabs {
+
+    &__inner {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 36px 125px;
+
+        margin-top: 47px;
+
+        @include breakpoint($medium-devices) {
+            gap: 25px 100px;
+        }
+
+        @include breakpoint($small-devices2) {
+            gap: 15px 70px;
+        }
+
+        @include breakpoint($small-devices3) {
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+
+
+    &__item {
+        display: flex;
+        justify-content: space-between;
+        width: 40%;
+
+        @include breakpoint($small-devices3) {
+            width: 80%;
+        }
+
+        @include breakpoint($small-phones) {
+            width: 92%;
+        }
+
+    }
+
+
+    &__title {
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 22px;
+    }
+
+
+    &__text {
+        margin-top: 8px;
+
+        line-height: 16px;
+    }
+
+
+    &__coast {
+        white-space: nowrap;
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 24px;
+        color: #00BF78;
+    }
+}
+
+.masters {
+
+    &__about {
+        font-size: 16px;
+        line-height: 20px;
+    }
+
+    &__inner {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 20px 0;
+
+        margin-top: 24px;
+        padding-bottom: 80px;
+
+        @include breakpoint($medium-devices) {
+            justify-content: center;
+            gap: 20px;
+        }
+    }
+}
+
+.card-master {
+    flex-basis: 25%;
+}
+
+.card-master {
+
+    &__link {
+        position: relative;
+
+        display: block;
+
+        &::after {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+
+            display: block;
+            width: 255px;
+            height: 300px;
+
+            border-radius: 8px;
+            background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+
+            content: "";
+            opacity: 0;
+            transition: opacity .2s ease-in-out;
+        }
+
+
+        &:hover .card-master__enroll {
+            opacity: 1;
+        }
+
+        &:hover::after {
+            opacity: 1;
+        }
+
+    }
+
+
+    &__photo {
+        position: relative;
+
+        display: inline-block;
+        width: 255px;
+        height: 300px;
+        object-fit: cover;
+
+        border-radius: 8px;
+    }
+
+
+    &__enroll {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        z-index: 2;
+
+        font-weight: 500;
+        line-height: 17px;
+        color: #fff;
+        text-align: center;
+
+        transform: translate(-50%, -50%);
+        opacity: 0;
+        transition: opacity .2s ease-in-out;
+
+    }
+
+
+    &__name {
+        margin-top: 20px;
+        padding-right: 10px;
+
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 22px;
+    }
+
+    &__prof {
+        margin-top: 8px;
+
+        line-height: 16px;
+    }
+
+
+    &__experience {
+        margin-top: 20px;
+
+        font-weight: 300;
+        font-size: 12px;
+        line-height: 14px;
+        text-transform: uppercase;
+    }
+}

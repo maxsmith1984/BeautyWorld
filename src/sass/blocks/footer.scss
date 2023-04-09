@@ -1,0 +1,51 @@
+.footer {
+    margin-top: auto;
+}
+
+.footer {
+    &__inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 0;
+
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 14px;
+
+        @include breakpoint($small-devices3) {
+            justify-content: center;
+
+            text-align: center;
+        }
+    }
+
+    &__copyright {
+        width: fit-content;
+    }
+
+    &__navigation {
+        padding: 11px 0;
+
+        @include breakpoint($small-devices3) {
+            display: none;
+        }
+    }
+}
+
+.copyright {
+
+    &__text {
+        margin-bottom: 8px;
+    }
+
+    &__politics {
+        white-space: nowrap;
+        color: #278AFF;
+        text-decoration: underline;
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
+}

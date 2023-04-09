@@ -1,0 +1,12 @@
+@mixin breakpoint ($bp) {
+    @media screen and (max-width: $bp) {
+        @content;
+    }
+}
+
+$medium-devices: 992px;
+$small-devices: 850px;
+$small-devices2: 768px;
+$small-devices3: 580px;
+$phones: 480px;
+$small-phones: 320px;
