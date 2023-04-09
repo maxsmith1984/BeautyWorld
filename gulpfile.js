@@ -1,4 +1,4 @@
-let preprocessor = 'sass';
+const preprocessor = 'sass';
 const { src, dest, parallel, series, watch } = require('gulp');
 const browserSync = require('browser-sync').create();
 const concat = require('gulp-concat');
