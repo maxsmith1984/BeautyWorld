@@ -1,5 +1,5 @@
 setTimeout(() => {
     console.log('hi')
-}, 3000)
+}, 5000)
 
 import './module.js'
