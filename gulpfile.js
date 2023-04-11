@@ -8,6 +8,8 @@ const cleancss = require('gulp-clean-css');
 const imagecomp = require('compress-images');
 const clean = require('gulp-clean');
 const sourcemaps = require('gulp-sourcemaps');
+const webpackStream = require('webpack-stream');
+const rename = require('gulp-rename');
 
 
 function browsersync() {
@@ -66,13 +68,23 @@ function cleandist() {
 }
 
 function startwatch() {
+    watch(['src/js/**/*.js', '!src/js/**/*.min.js'], buildJs);
     watch('src/**/' + preprocessor + '/**/*', styles);
     watch('src/**/*.html').on('change', browserSync.reload);
     watch('src/images/src/**/*', images);
 }
 
+function buildJs() {
+    return src('src/js/index.js')
+        .pipe(webpackStream(require('./webpack.config')))
+        .pipe(rename('main.min.js'))
+        .pipe(dest('src/js'))
+        .pipe(dest('dist/js'))
+        .pipe(browserSync.stream());
+}
+
 exports.images = images;
 exports.cleanimg = cleanimg;
 
-exports.build = series(cleandist, styles, images, buildcopy);
-exports.default = parallel(styles, browsersync, startwatch);
+exports.build = series(cleandist, parallel(styles, images, buildcopy, buildJs));
+exports.default = series([styles, buildJs], parallel(browsersync, startwatch));
