@@ -86,5 +86,5 @@ function buildJs() {
 exports.images = images;
 exports.cleanimg = cleanimg;
 
-exports.build = series(cleandist, parallel(buildcopy, styles, images));
+exports.build = series(cleandist, buildcopy, styles, images, buildJs);
 exports.default = series([styles, buildJs], parallel(browsersync, startwatch));
