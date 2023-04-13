@@ -14,6 +14,13 @@
             font-size: 32px;
             line-height: 32px;
         }
+
+        &_small {
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 20px;
+            text-align: center;
+        }
     }
 
     &__header {
@@ -30,13 +37,45 @@
                 padding-top: 50px;
             }
         }
+
+        &_between {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            @include breakpoint($small-devices) {
+                flex-direction: column;
+            }
+        }
     }
 
     &__inner {
-        margin: 32px 0 20px;
+        margin-top: 32px;
+
+        padding-bottom: 20px;
 
         @include breakpoint($small-devices) {
             margin: 16px 0 10px;
+        }
+
+        &_margintop {
+            margin-top: 50px;
+        }
+
+        &_flex {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+
+            margin-top: 0;
+            padding: 40px 95px 40px 0;
+
+            @include breakpoint($medium-devices) {
+                flex-direction: column;
+                align-items: center;
+
+                padding: 40px 0;
+            }
         }
     }
 
@@ -48,6 +87,11 @@
         background: #F8F6F7;
     }
 
+    &__carousel {
+        @include breakpoint($small-devices) {
+            margin-top: 20px;
+        }
+    }
 }
 
 .about {
@@ -77,7 +121,6 @@
         }
     }
 
-
     &__text {
         margin-bottom: 16px;
 
@@ -95,7 +138,6 @@
         }
     }
 
-
     &__moretext {
         font-size: 16px;
         line-height: 26px;
@@ -109,7 +151,6 @@
             line-height: 22px;
         }
     }
-
 
     &__video {
         position: relative;
@@ -141,7 +182,6 @@
             opacity: .2;
 
             content: "";
-
         }
     }
 }
@@ -281,6 +321,7 @@
 }
 
 .card {
+
     &__item {
         flex-basis: 30%;
     }
@@ -366,9 +407,7 @@
         @include breakpoint($small-phones) {
             width: 92%;
         }
-
     }
-
 
     &__title {
         font-weight: 500;
@@ -376,13 +415,11 @@
         line-height: 22px;
     }
 
-
     &__text {
         margin-top: 8px;
 
         line-height: 16px;
     }
-
 
     &__coast {
         white-space: nowrap;
@@ -445,7 +482,6 @@
             transition: opacity .2s ease-in-out;
         }
 
-
         &:hover .card-master__enroll {
             opacity: 1;
         }
@@ -455,7 +491,6 @@
         }
 
     }
-
 
     &__photo {
         position: relative;
@@ -467,7 +502,6 @@
 
         border-radius: 8px;
     }
-
 
     &__enroll {
         position: absolute;
@@ -486,7 +520,6 @@
 
     }
 
-
     &__name {
         margin-top: 20px;
         padding-right: 10px;
@@ -502,7 +535,6 @@
         line-height: 16px;
     }
 
-
     &__experience {
         margin-top: 20px;
 
@@ -510,5 +542,329 @@
         font-size: 12px;
         line-height: 14px;
         text-transform: uppercase;
+    }
+}
+
+.carousel-nav {
+
+    &__btn {
+        display: inline-block;
+        padding: 20px;
+
+        border: none;
+        background: none;
+        border-radius: 50%;
+
+        cursor: pointer;
+        transition: background-color .2s ease-in-out;
+
+        &_prev {
+            margin-right: 16px;
+
+            background: url('../images/dest/icon/prev.svg') center no-repeat;
+        }
+
+        &_next {
+            background: url('../images/dest/icon/next.svg') center no-repeat;
+        }
+
+        &:hover {
+            background-color: #F8F6F7;
+        }
+    }
+}
+
+.works {
+    display: flex;
+    gap: 29px;
+
+    @include breakpoint($small-devices) {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+.works {
+
+    &__item {
+        position: relative;
+
+        width: 25%;
+        height: 338px;
+
+        cursor: pointer;
+        transition: transform .2s ease-in-out;
+
+        @include breakpoint($small-devices) {
+            width: 40%;
+        }
+
+        @include breakpoint($phones) {
+            width: 80%;
+        }
+
+        &::after {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+
+            display: block;
+            width: 100%;
+            height: 100%;
+
+            border-radius: 8px;
+            background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+
+            content: "";
+            opacity: 0;
+            transition: opacity .2s ease-in-out;
+        }
+
+        &:hover {
+            transform: scale(1.1);
+        }
+
+        &:hover::after {
+            opacity: 1;
+        }
+
+        &:hover .works__closer {
+            opacity: 1;
+        }
+    }
+
+    &__img {
+        display: block;
+
+        width: 100%;
+        height: 338px;
+        object-fit: cover;
+
+        border-radius: 8px;
+    }
+
+    &__closer {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        z-index: 2;
+
+        text-align: center;
+
+        transform: translate(-50%, -50%);
+        opacity: 0;
+        transition: opacity .2s ease-in-out;
+    }
+
+    &__text {
+        margin-top: 8px;
+
+        font-weight: 500;
+        line-height: 18px;
+        color: #fff;
+    }
+}
+
+.brands {
+
+    &__inner {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 10px 70px;
+
+        margin: 40px 0 67px;
+
+        @include breakpoint($small-devices2) {
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+    }
+
+    &__item {
+        flex-basis: 10%;
+
+        @include breakpoint($small-devices2) {
+            flex-basis: 20%;
+        }
+
+        @include breakpoint($phones) {
+            flex-basis: 30%;
+        }
+    }
+
+    &__img {
+        display: block;
+
+        width: 100%;
+        height: auto;
+
+        opacity: .35;
+    }
+}
+
+.contacts {
+    flex-basis: 30%;
+
+    @include breakpoint($small-devices2) {
+        text-align: center;
+    }
+}
+
+.contacts {
+
+    &__title {
+        margin-top: 38px;
+
+        font-weight: 700;
+        font-size: 48px;
+        line-height: 58px;
+
+        @include breakpoint($phones) {
+            margin-top: 0;
+
+            text-align: center;
+            font-size: 32px;
+            line-height: 32px;
+        }
+    }
+
+    &__inner {
+        margin: 32px 0 40px;
+    }
+
+    &__address {
+        font-size: 16px;
+        line-height: 20px;
+    }
+
+    &__tel {
+        display: block;
+        margin-top: 20px;
+
+        font-size: 16px;
+        line-height: 14px;
+
+        transition: text-decoration .2s linear;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    &__email {
+        display: block;
+        margin-top: 20px;
+
+        font-size: 16px;
+        line-height: 20px;
+        color: #278AFF;
+        text-decoration: underline;
+
+        transition: text-decoration .2s linear;
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
+
+    &__text {
+        margin: 32px 0 12px;
+
+        font-size: 12px;
+        line-height: 14px;
+    }
+
+    &__form {
+        @include breakpoint($small-devices) {
+            text-align: center;
+        }
+    }
+}
+
+.form {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+}
+
+.form {
+
+    &__inner {
+        width: 445px;
+        padding: 40px 35px;
+
+        @include breakpoint($small-devices2) {
+            width: 350px;
+            padding: 30px 20px;
+        }
+
+        @include breakpoint($phones) {
+            width: 290px;
+            padding: 20px 10px;
+        }
+    }
+
+    &__title {
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 14px;
+    }
+
+    &__text {
+        width: 100%;
+        margin-top: 15px;
+
+        line-height: 20px;
+    }
+
+    &__name,
+    &__tel {
+        width: 100%;
+        padding: 15px 16px;
+
+        border: 1px solid #D8D8D8;
+        border-radius: 4px;
+
+        font-family: inherit;
+
+        transition: border .3s linear;
+
+        &::placeholder {
+            color: #A0A0A0;
+        }
+
+        &:focus {
+            border: 1px solid #000;
+        }
+    }
+
+    &__name {
+        margin-top: 35px;
+
+        @include breakpoint($phones) {
+            margin-top: 15px;
+        }
+    }
+
+    &__tel {
+        margin: 20px 0;
+    }
+
+    &__text {
+        font-weight: 300;
+        font-size: 12px;
+        line-height: 15px;
+    }
+
+    &__personal {
+        border-bottom: 1px solid #278AFF;
+        color: #278AFF;
+
+        &:hover {
+            border-bottom: none;
+        }
     }
 }
