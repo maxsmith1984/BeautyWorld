@@ -23,6 +23,7 @@ function browsersync() {
 function styles() {
     return src('src/' + preprocessor + '/main.scss')
         .pipe(sourcemaps.init())
+        .pipe(sass({ includePaths: ['./node_modules'] }).on('error', sass.logError))
         .pipe(eval(preprocessor)())
         .pipe(concat('app.min.css'))
         .pipe(autoprefixer({ overrideBrowserslist: ['last 2 versions'], grid: true }))

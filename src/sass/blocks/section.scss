@@ -59,7 +59,7 @@
         }
 
         &_margintop {
-            margin-top: 50px;
+            margin-top: 40px;
         }
 
         &_flex {
@@ -574,14 +574,12 @@
     }
 }
 
-.works {
-    display: flex;
-    gap: 29px;
+.swiper-wrapper {
+    padding: 20px 0;
+}
 
-    @include breakpoint($small-devices) {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
+.swiper-slide {
+    transform: none;
 }
 
 .works {

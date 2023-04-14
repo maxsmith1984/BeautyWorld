@@ -25,6 +25,7 @@
     "browser-sync": "^2.29.1",
     "compress-images": "^2.0.5",
     "cross-env": "^7.0.3",
+    "css-loader": "^6.7.3",
     "gifsicle": "^5.3.0",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^8.0.0",
@@ -35,10 +36,12 @@
     "gulp-sourcemaps": "^3.0.0",
     "pngquant-bin": "^6.0.0",
     "sass": "^1.60.0",
+    "style-loader": "^3.3.2",
     "webpack": "^5.78.0",
     "webpack-stream": "^7.0.0"
   },
   "dependencies": {
-    "gulp-concat": "^2.6.1"
+    "gulp-concat": "^2.6.1",
+    "swiper": "^9.2.0"
   }
 }
