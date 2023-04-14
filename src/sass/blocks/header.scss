@@ -192,6 +192,10 @@
         &_active {
             color: #00BF78;
             border-bottom: 2px solid #00BF78;
+
+            &:focus {
+                outline: none;
+            }
         }
 
         &_mobile {

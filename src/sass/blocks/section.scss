@@ -372,6 +372,10 @@
 }
 
 .tabs {
+    display: none;
+}
+
+.tabs {
 
     &__inner {
         display: flex;
@@ -427,6 +431,10 @@
         font-size: 20px;
         line-height: 24px;
         color: #00BF78;
+    }
+
+    &_active {
+        display: block;
     }
 }
 
