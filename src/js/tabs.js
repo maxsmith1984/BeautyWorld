@@ -35,8 +35,8 @@ class TabsManager {
     }
 
     init(tabsElem) {
-        const links = tabsElem.querySelectorAll('#tabs-link');
-        const contents = tabsElem.querySelectorAll('#tabs');
+        const links = tabsElem.querySelectorAll('.tabs-link');
+        const contents = tabsElem.querySelectorAll('.tabs');
 
         for (let i = 0; i < links.length; i++) {
             const tab = new TabItem(links[i], contents[i]);
@@ -55,7 +55,6 @@ class TabsManager {
     }
 }
 
-window.onload = function () {
-    const tabsElem = document.querySelector('#tabs-section');
-    new TabsManager(tabsElem);
-}
+
+const tabsElem = document.querySelector('#tabs-section');
+new TabsManager(tabsElem);

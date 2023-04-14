@@ -176,7 +176,8 @@
         }
     }
 
-    &__link {
+    &__link,
+    .navigation__link-tab {
         font-weight: 500;
 
         transition: color .1s linear;
