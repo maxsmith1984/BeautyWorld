@@ -1,4 +1,4 @@
-window.onload = () => {
+const mobileNav = () => {
     const navBtn = document.querySelector('#burger');
     const mobileMenu = document.querySelector('#mobile-menu');
 
@@ -26,4 +26,6 @@ window.onload = () => {
             closeMenu();
         });
     }
-};
+}
+
+export default mobileNav;

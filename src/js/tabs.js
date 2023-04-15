@@ -54,7 +54,9 @@ class TabsManager {
         this.activeTab.activate();
     }
 }
+const tabs = () => {
+    const tabsElem = document.querySelector('#tabs-section');
+    new TabsManager(tabsElem);
+}
 
-
-const tabsElem = document.querySelector('#tabs-section');
-new TabsManager(tabsElem);
+export default tabs;
