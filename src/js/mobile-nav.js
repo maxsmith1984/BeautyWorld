@@ -12,8 +12,6 @@ const mobileNav = () => {
     });
 
     navBtn.addEventListener('click', toggleMenu);
-    document.addEventListener('scroll', closeMenu);
-
 
     const smoothScrollLinks = document.querySelectorAll('.navigation__link');
 
