@@ -1,3 +1,5 @@
+import './funcybox'
+
 import mobileNav from './mobile-nav'
 import tabs from './tabs'
 import slider from './swiper-slider'

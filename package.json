@@ -41,6 +41,7 @@
     "webpack-stream": "^7.0.0"
   },
   "dependencies": {
+    "@fancyapps/ui": "^5.0.16",
     "gulp-concat": "^2.6.1",
     "swiper": "^9.2.0"
   }

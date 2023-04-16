@@ -9,7 +9,7 @@ const registrationData = () => {
         form.reset();
     })
 
-    async function sendData(name, tel) {
+    function sendData(name, tel) {
         const formData = new FormData()
         formData.append('name', name)
         formData.append('tel', tel)
@@ -19,6 +19,5 @@ const registrationData = () => {
         }
     }
 }
-
 
 export default registrationData;
