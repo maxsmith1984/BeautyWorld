@@ -11,18 +11,15 @@ $(function () {
         messages: {
             name: {
                 required: "Введите Ваше имя",
+                minlength: "Введите не менее 2-х символов"
             },
-            tel: {
+            phone: {
                 required: "Введите Ваш номер телефона",
-            },
-            date: {
-                required: "Введите дату"
             }
         },
 
     });
 });
-
 
 $(function () {
     $('#form').validate({
@@ -30,13 +27,15 @@ $(function () {
             name: {
                 required: true,
                 minlength: 2
-            }
+            },
+
         },
         messages: {
             name: {
                 required: "Введите Ваше имя",
+                minlength: "Введите не менее 2-х символов"
             },
-            tel: {
+            phone: {
                 required: "Введите Ваш номер телефона",
             }
         },

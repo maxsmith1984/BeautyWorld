@@ -1,26 +1,26 @@
 import { Fancybox } from "@fancyapps/ui";
 const registrationData = () => {
     const forms = document.querySelectorAll('[data-form]');
-    const hiddenForm = forms[1];
 
     forms.forEach(form => {
         form.addEventListener('submit', function (event) {
             event.preventDefault();
             if (this.dataset.form === 'form1') {
-                const { name, tel } = this.elements;
-                if (isFormValid(name, tel)) {
+                const { name, phone } = this.elements;
+                if (isFormValid(name, phone)) {
                     const formData = new FormData(this);
                     sendData(formData);
                     form.reset();
-                }
+                };
+
             } else if (this.dataset.form === 'form2') {
-                const { name, tel, employee, service, date } = this.elements;
-                if (isFormValid(name, tel)) {
+                const { name, phone, employee, service, date } = this.elements;
+                if (isFormValid(name, phone)) {
                     const formData = new FormData(this);
                     sendData(formData);
                     form.reset();
-                }
-            }
+                };
+            };
         });
     });
 
@@ -31,10 +31,13 @@ const registrationData = () => {
         }
         return true;
     }
-    function sendData(formData) {
-        fetch('http://httpbin.org/post', {
+
+    async function sendData(formData) {
+        const orderData = Object.fromEntries(formData.entries());
+        loading();
+        return await fetch('http://localhost:3005/api/orders', {
             method: 'POST',
-            body: JSON.stringify(formData),
+            body: JSON.stringify(orderData),
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -44,23 +47,57 @@ const registrationData = () => {
                     throw new Error('Ошибка отправки данных');
                 } else if (response.ok) {
 
-                    // alert("Ваша заявка отправлена! В ближайшее время с вами свяжется менеджер.")
+                    successMessege();
                     setTimeout(() => {
                         Fancybox.close();
                     }, 3000);
-                    return response.json();
+                    return formData;
                 }
             })
-            .then((formData) => {
-                console.log(formData)
-
+            .then((response) => {
+                for (let [key, value] of response) {
+                    console.log(`${key} - ${value}`)
+                }
             })
             .catch(error => {
                 console.error('Ошибка отправки данных:', error);
+            })
+
+            .finally(() => {
+                loading();
+                setTimeout(() => {
+                    successMessege()
+                }, 2500)
             });
-    }
+    };
 
+    const successMessege = () => {
+        const messeges = document.querySelectorAll('#success-messege');
+
+        messeges.forEach((messege) => {
+            const hidden = messege.hasAttribute('hidden');
+
+            if (hidden) {
+                messege.removeAttribute('hidden');
+            } else {
+                messege.setAttribute('hidden', '');
+            }
+        });
+    };
+
+    const loading = () => {
+        const loaders = document.querySelectorAll('#loader');
+
+        loaders.forEach((loader) => {
+            const hideLoader = loader.hasAttribute('hidden');
+            if (hideLoader) {
+                loader.removeAttribute('hidden');
+            } else {
+                loader.setAttribute('hidden', '');
+            }
+        });
+
+    };
 }
-
 
 export default registrationData;

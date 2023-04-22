@@ -858,9 +858,12 @@
                                     подробности и согласует
                                     время.
                                 </div>
+                                <div class="form__loader" id="loader" hidden>Отправка</div>
+                                <div class="form__success" id="success-messege" hidden>Ваша заявка отправлена! В
+                                    ближайшее время с вами свяжется менеджер</div>
                                 <input class="form__name" type="text" placeholder="Ваше имя" name="name" required>
-                                <input class="form__tel" type="tel" placeholder="+7 (___) ___-__-__" name="tel" id="tel"
-                                    required>
+                                <input class="form__tel" type="tel" placeholder="+7 (___) ___-__-__" name="phone"
+                                    id="phone" required>
                                 <button class="button button_big button_margintop" type="submit">Записаться</button>
                                 <div class="form__text">Нажимая на кнопку вы соглашаетесь с <a class="form__personal"
                                         href="#">обработкой
@@ -902,17 +905,21 @@
     </div>
 
     <form class="form" id="hidden-form" style="display:none;max-width:500px;" data-form="form2">
-        <div>Ваша заявка отправлена! В ближайшее время с вами свяжется менеджер</div>
+
         <div class="form__inner">
             <div class="form__title">Записаться онлайн</div>
             <input class="form__name" type="text" placeholder="Ваше имя" name="name" required>
-            <input class="form__tel" type="tel" placeholder="+7 (___) ___-__-__" name="tel" id="tel" required>
+            <input class="form__tel" type="tel" placeholder="+7 (___) ___-__-__" name="phone" id="phone" required>
             <select class="form__select" name="employee">
                 <option value="Краснова Ирина">Краснова Ирина</option>
                 <option value="Калилова Жанна">Калилова Жанна</option>
                 <option value="Киселева Алина">Киселева Алина</option>
                 <option value="Иванова Елена">Иванова Елена</option>
             </select>
+            <div class="form__loader" id="loader" hidden>Отправка</div>
+            <div class="form__success" id="success-messege" hidden>Ваша заявка отправлена! В ближайшее время с вами
+                свяжется
+                менеджер</div>
             <select class="form__select" name="service">
                 <option value="Стрижка и укладка">Стрижка и укладка</option>
                 <option value="Косметология">Косметология</option>
@@ -921,7 +928,7 @@
                 <option value="Брови и ресницы">Брови и ресницы</option>
                 <option value="Массаж">Массаж</option>
             </select>
-            <input class="form__date" type="date" name="date" required>
+            <input class="form__date" type="date" name="date">
             <button class="button button_big button_margintop" type="submit">Записаться</button>
             <div class="form__text form__text-margintop">Нажимая на кнопку вы соглашаетесь с <br><a
                     class="form__personal" href="#">обработкой

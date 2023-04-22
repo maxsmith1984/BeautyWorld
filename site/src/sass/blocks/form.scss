@@ -11,6 +11,8 @@
 .form {
 
     &__inner {
+        position: relative;
+
         width: 445px;
         padding: 40px 35px;
 
@@ -94,5 +96,79 @@
         &:hover {
             border-bottom: none;
         }
+    }
+
+    &__success {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+
+        width: 80%;
+        padding: 30px 10px;
+
+        text-align: center;
+
+        transform: translate(-50%, -50%);
+
+        background: #fff;
+        border: 1px solid #fb9475;
+        border-radius: 22px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    &__loader {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+
+        width: 250px;
+        transform: translate(-50%, -50%);
+
+        line-height: 50px;
+        text-align: center;
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: 18px;
+        color: #fb9475;
+
+        &::after,
+        &::before {
+            position: absolute;
+
+            display: block;
+            width: 15px;
+            height: 15px;
+            background: #fb9475;
+
+            content: "";
+            animation: form__loader 0.81s infinite alternate ease-in-out;
+        }
+
+        &::before {
+            top: 0;
+        }
+
+        &::after {
+            bottom: 0;
+        }
+    }
+}
+
+@keyframes form__loader {
+    0% {
+        left: 0;
+        height: 29px;
+        width: 15px;
+    }
+
+    50% {
+        height: 8px;
+        width: 39px;
+    }
+
+    100% {
+        left: 229px;
+        height: 29px;
+        width: 15px;
     }
 }
