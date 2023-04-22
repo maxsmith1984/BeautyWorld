@@ -43,6 +43,10 @@
   "dependencies": {
     "@fancyapps/ui": "^5.0.16",
     "gulp-concat": "^2.6.1",
-    "swiper": "^9.2.0"
+    "inputmask": "^5.0.8",
+    "jquery": "^3.6.4",
+    "jquery-validation": "^1.19.5",
+    "swiper": "^9.2.0",
+    "validator": "^13.9.0"
   }
 }

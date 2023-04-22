@@ -1,4 +1,5 @@
 @use 'swiper/swiper-bundle.css';
+@use "@fancyapps/ui/dist/fancybox/fancybox.css";
 
 @import 'libs/reset.scss';
 @import 'sizes.scss';
@@ -38,6 +39,15 @@ a {
 
 input {
     display: block;
+}
+
+input.error {
+    border: 1px solid #ff0000;
+}
+
+label.error {
+    color: #ff0000;
+    font-weight: normal;
 }
 
 .page {
