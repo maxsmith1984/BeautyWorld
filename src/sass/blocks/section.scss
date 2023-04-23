@@ -103,9 +103,6 @@
         margin-bottom: 45px;
         flex-direction: column;
     }
-}
-
-.about {
 
     &__description {
         width: 49%;
@@ -255,9 +252,6 @@
     display: flex;
     flex-wrap: wrap;
     width: 100%;
-}
-
-.about-footer {
 
     &__item {
         width: 33.33%;
@@ -318,10 +312,6 @@
         justify-content: center;
     }
 
-}
-
-.card {
-
     &__item {
         flex-basis: 30%;
     }
@@ -373,9 +363,6 @@
 
 .tabs {
     display: none;
-}
-
-.tabs {
 
     &__inner {
         display: flex;
@@ -463,9 +450,6 @@
 
 .card-master {
     flex-basis: 25%;
-}
-
-.card-master {
 
     &__link {
         position: relative;
@@ -717,9 +701,6 @@
     @include breakpoint($small-devices2) {
         text-align: center;
     }
-}
-
-.contacts {
 
     &__title {
         margin-top: 38px;
