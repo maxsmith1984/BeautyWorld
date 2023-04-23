@@ -11,31 +11,49 @@
 
 <body>
     <div class="page">
-        <header class="header">
+        <header class="header" id="header">
+            <button class="burger" type="button" id="burger">
+                <span>Открыть навигацию</span>
+            </button>
+            <nav class="mobile-nav navigation" id="mobile-menu">
+                <ul class="navigation__list navigation__list_mobile">
+                    <li class="navigation__item">
+                        <a class="navigation__link navigation__link_mobile" href="#services">Услуги и цены</a>
+                    </li>
+                    <li class="navigation__item">
+                        <a class="navigation__link navigation__link_mobile" href="#masters">Мастера</a>
+                    </li>
+                    <li class="navigation__item">
+                        <a class="navigation__link navigation__link_mobile" href="#works">Наши работы</a>
+                    </li>
+                    <li class="navigation__item">
+                        <a class="navigation__link navigation__link_mobile" href="#about">О нас</a>
+                    </li>
+                    <li class="navigation__item">
+                        <a class="navigation__link navigation__link_mobile" href="#contacts">Контакты</a>
+                    </li>
+                </ul>
+            </nav>
             <div class="container">
                 <div class="header__top">
-                    <button class="burger" type="button" id="burger">
-                        <span>Открыть навигацию</span>
-                    </button>
-
                     <a class="header__title logo" href="/">Мир Красоты</a>
 
                     <nav class="header__navigation navigation">
                         <ul class="navigation__list">
                             <li class="navigation__item">
-                                <a class="navigation__link" href="#">Услуги и цены</a>
+                                <a class="navigation__link" href="#services">Услуги и цены</a>
                             </li>
                             <li class="navigation__item">
-                                <a class="navigation__link" href="#">Мастера</a>
+                                <a class="navigation__link" href="#masters">Мастера</a>
                             </li>
                             <li class="navigation__item">
-                                <a class="navigation__link" href="#">Наши работы</a>
+                                <a class="navigation__link" href="#works">Наши работы</a>
                             </li>
                             <li class="navigation__item">
-                                <a class="navigation__link" href="#">О нас</a>
+                                <a class="navigation__link" href="#about">О нас</a>
                             </li>
                             <li class="navigation__item">
-                                <a class="navigation__link" href="#">Контакты</a>
+                                <a class="navigation__link" href="#contacts">Контакты</a>
                             </li>
                         </ul>
                     </nav>
@@ -83,7 +101,7 @@
             <section class="section">
                 <div class="container">
                     <div class="section__header">
-                        <div class="section__title">О салоне</div>
+                        <div class="section__title" id="about">О салоне</div>
                     </div>
                     <div class="section__inner">
                         <div class="about">
@@ -108,10 +126,11 @@
                                 </div>
                             </div>
 
-                            <div class="about__video video">
-                                <img class="video__file" src="images/dest/video/ex.jpg" alt="Временное фото">
+                            <a class="about__video video" href="https://www.youtube.com/watch?v=tHnwV5ay8-8"
+                                data-fancybox>
+                                <img class="video__file" href="" src="images/dest/video/ex.jpg" alt="Временное фото">
                                 <div class="video__text">Короткое видео о нас</div>
-                            </div>
+                            </a>
                         </div>
 
                         <div class="about-footer">
@@ -151,7 +170,7 @@
             <section class="section">
                 <div class="container">
                     <div class="section__header">
-                        <div class="section__title">Популярные услуги</div>
+                        <div class="section__title" id="services">Популярные услуги</div>
                     </div>
                     <div class="section__inner">
                         <div class="card">
@@ -229,31 +248,32 @@
                     <div class="section__header">
                         <div class="section__title">Услуги и цены</div>
                     </div>
-                    <div class="section__inner">
+                    <div class="section__inner" id="tabs-section">
                         <nav class="navigation section__navigation">
                             <ul class="navigation__list">
                                 <li class="navigation__item">
-                                    <a class="navigation__link navigation__link_active" href="#">Стрижка и укладка</a>
+                                    <a class="navigation__link-tab navigation__link_active tabs-link" href="#">Стрижка
+                                        и укладка</a>
                                 </li>
                                 <li class="navigation__item">
-                                    <a class="navigation__link" href="#">Косметология</a>
+                                    <a class="navigation__link-tab tabs-link" href="#">Косметология</a>
                                 </li>
                                 <li class="navigation__item">
-                                    <a class="navigation__link" href="#">Маникюр и педикюр</a>
+                                    <a class="navigation__link-tab tabs-link" href="#">Маникюр и педикюр</a>
                                 </li>
                                 <li class="navigation__item">
-                                    <a class="navigation__link" href="#">Макияж</a>
+                                    <a class="navigation__link-tab tabs-link" href="#">Макияж</a>
                                 </li>
                                 <li class="navigation__item">
-                                    <a class="navigation__link" href="#">Брови и ресницы</a>
+                                    <a class="navigation__link-tab tabs-link" href="#">Брови и ресницы</a>
                                 </li>
                                 <li class="navigation__item">
-                                    <a class="navigation__link" href="#">Массаж</a>
+                                    <a class="navigation__link-tab tabs-link" href="#">Массаж</a>
                                 </li>
                             </ul>
                         </nav>
 
-                        <div class="tabs">
+                        <div class="tabs tabs_active">
                             <div class="tabs__inner">
                                 <div class="tabs__item">
                                     <div class="tabs__description">
@@ -314,6 +334,316 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="tabs">
+                            <div class="tabs__inner">
+                                <div class="tabs__item">
+                                    <div class="tabs__description">
+                                        <div class="tabs__title">Косметология</div>
+                                        <div class="tabs__text">Короткие волосы</div>
+                                    </div>
+                                    <div class="tabs__coast">1200 ₽</div>
+                                </div>
+                                <div class="tabs__item">
+                                    <div class="tabs__description">
+                                        <div class="tabs__title">Косметология</div>
+                                        <div class="tabs__text">Короткие волосы</div>
+                                    </div>
+                                    <div class="tabs__coast">1200 ₽</div>
+                                </div>
+                                <div class="tabs__item">
+                                    <div class="tabs__description">
+                                        <div class="tabs__title">Косметология</div>
+                                        <div class="tabs__text">Короткие волосы</div>
+                                    </div>
+                                    <div class="tabs__coast">1200 ₽</div>
+                                </div>
+                                <div class="tabs__item">
+                                    <div class="tabs__description">
+                                        <div class="tabs__title">Косметология</div>
+                                        <div class="tabs__text">Короткие волосы</div>
+                                    </div>
+                                    <div class="tabs__coast">1200 ₽</div>
+                                </div>
+                                <div class="tabs__item">
+                                    <div class="tabs__description">
+                                        <div class="tabs__title">Косметология</div>
+                                        <div class="tabs__text">Короткие волосы</div>
+                                    </div>
+                                    <div class="tabs__coast">1200 ₽</div>
+                                </div>
+                                <div class="tabs__item">
+                                    <div class="tabs__description">
+                                        <div class="tabs__title">Косметология</div>
+                                        <div class="tabs__text">Короткие волосы</div>
+                                    </div>
+                                    <div class="tabs__coast">1200 ₽</div>
+                                </div>
+                                <div class="tabs__item">
+                                    <div class="tabs__description">
+                                        <div class="tabs__title">Косметология</div>
+                                        <div class="tabs__text">Короткие волосы</div>
+                                    </div>
+                                    <div class="tabs__coast">1200 ₽</div>
+                                </div>
+                                <div class="tabs__item">
+                                    <div class="tabs__description">
+                                        <div class="tabs__title">Косметология
+                                        </div>
+                                        <div class="tabs__text">Короткие волосы</div>
+                                    </div>
+                                    <div class="tabs__coast">1200 ₽</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tabs">
+                            <div class="tabs__inner">
+                                <div class="tabs__item">
+                                    <div class="tabs__description">
+                                        <div class="tabs__title">
+                                            Маникюр и педикюр</div>
+                                        <div class="tabs__text">Короткие волосы</div>
+                                    </div>
+                                    <div class="tabs__coast">1200 ₽</div>
+                                </div>
+                                <div class="tabs__item">
+                                    <div class="tabs__description">
+                                        <div class="tabs__title">
+                                            Маникюр и педикюр</div>
+                                        <div class="tabs__text">Короткие волосы</div>
+                                    </div>
+                                    <div class="tabs__coast">1200 ₽</div>
+                                </div>
+                                <div class="tabs__item">
+                                    <div class="tabs__description">
+                                        <div class="tabs__title">
+                                            Маникюр и педикюр</div>
+                                        <div class="tabs__text">Короткие волосы</div>
+                                    </div>
+                                    <div class="tabs__coast">1200 ₽</div>
+                                </div>
+                                <div class="tabs__item">
+                                    <div class="tabs__description">
+                                        <div class="tabs__title">
+                                            Маникюр и педикюр</div>
+                                        <div class="tabs__text">Короткие волосы</div>
+                                    </div>
+                                    <div class="tabs__coast">1200 ₽</div>
+                                </div>
+                                <div class="tabs__item">
+                                    <div class="tabs__description">
+                                        <div class="tabs__title">
+                                            Маникюр и педикюр</div>
+                                        <div class="tabs__text">Короткие волосы</div>
+                                    </div>
+                                    <div class="tabs__coast">1200 ₽</div>
+                                </div>
+                                <div class="tabs__item">
+                                    <div class="tabs__description">
+                                        <div class="tabs__title">
+                                            Маникюр и педикюр</div>
+                                        <div class="tabs__text">Короткие волосы</div>
+                                    </div>
+                                    <div class="tabs__coast">1200 ₽</div>
+                                </div>
+                                <div class="tabs__item">
+                                    <div class="tabs__description">
+                                        <div class="tabs__title">
+                                            Маникюр и педикюр</div>
+                                        <div class="tabs__text">Короткие волосы</div>
+                                    </div>
+                                    <div class="tabs__coast">1200 ₽</div>
+                                </div>
+                                <div class="tabs__item">
+                                    <div class="tabs__description">
+                                        <div class="tabs__title">
+                                            Маникюр и педикюр
+                                        </div>
+                                        <div class="tabs__text">Короткие волосы</div>
+                                    </div>
+                                    <div class="tabs__coast">1200 ₽</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tabs">
+                            <div class="tabs__inner">
+                                <div class="tabs__item">
+                                    <div class="tabs__description">
+                                        <div class="tabs__title">Макияж</div>
+                                        <div class="tabs__text">Короткие волосы</div>
+                                    </div>
+                                    <div class="tabs__coast">1200 ₽</div>
+                                </div>
+                                <div class="tabs__item">
+                                    <div class="tabs__description">
+                                        <div class="tabs__title">Макияж</div>
+                                        <div class="tabs__text">Короткие волосы</div>
+                                    </div>
+                                    <div class="tabs__coast">1200 ₽</div>
+                                </div>
+                                <div class="tabs__item">
+                                    <div class="tabs__description">
+                                        <div class="tabs__title">Макияж</div>
+                                        <div class="tabs__text">Короткие волосы</div>
+                                    </div>
+                                    <div class="tabs__coast">1200 ₽</div>
+                                </div>
+                                <div class="tabs__item">
+                                    <div class="tabs__description">
+                                        <div class="tabs__title">Макияж</div>
+                                        <div class="tabs__text">Короткие волосы</div>
+                                    </div>
+                                    <div class="tabs__coast">1200 ₽</div>
+                                </div>
+                                <div class="tabs__item">
+                                    <div class="tabs__description">
+                                        <div class="tabs__title">Макияж</div>
+                                        <div class="tabs__text">Короткие волосы</div>
+                                    </div>
+                                    <div class="tabs__coast">1200 ₽</div>
+                                </div>
+                                <div class="tabs__item">
+                                    <div class="tabs__description">
+                                        <div class="tabs__title">Макияж</div>
+                                        <div class="tabs__text">Короткие волосы</div>
+                                    </div>
+                                    <div class="tabs__coast">1200 ₽</div>
+                                </div>
+                                <div class="tabs__item">
+                                    <div class="tabs__description">
+                                        <div class="tabs__title">Макияж</div>
+                                        <div class="tabs__text">Короткие волосы</div>
+                                    </div>
+                                    <div class="tabs__coast">1200 ₽</div>
+                                </div>
+                                <div class="tabs__item">
+                                    <div class="tabs__description">
+                                        <div class="tabs__title">Макияж</div>
+                                        <div class="tabs__text">Короткие волосы</div>
+                                    </div>
+                                    <div class="tabs__coast">1200 ₽</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tabs">
+                            <div class="tabs__inner">
+                                <div class="tabs__item">
+                                    <div class="tabs__description">
+                                        <div class="tabs__title">Брови и ресницы</div>
+                                        <div class="tabs__text">Короткие волосы</div>
+                                    </div>
+                                    <div class="tabs__coast">1200 ₽</div>
+                                </div>
+                                <div class="tabs__item">
+                                    <div class="tabs__description">
+                                        <div class="tabs__title">Брови и ресницы</div>
+                                        <div class="tabs__text">Короткие волосы</div>
+                                    </div>
+                                    <div class="tabs__coast">1200 ₽</div>
+                                </div>
+                                <div class="tabs__item">
+                                    <div class="tabs__description">
+                                        <div class="tabs__title">Брови и ресницы</div>
+                                        <div class="tabs__text">Короткие волосы</div>
+                                    </div>
+                                    <div class="tabs__coast">1200 ₽</div>
+                                </div>
+                                <div class="tabs__item">
+                                    <div class="tabs__description">
+                                        <div class="tabs__title">Брови и ресницы</div>
+                                        <div class="tabs__text">Короткие волосы</div>
+                                    </div>
+                                    <div class="tabs__coast">1200 ₽</div>
+                                </div>
+                                <div class="tabs__item">
+                                    <div class="tabs__description">
+                                        <div class="tabs__title">Брови и ресницы</div>
+                                        <div class="tabs__text">Короткие волосы</div>
+                                    </div>
+                                    <div class="tabs__coast">1200 ₽</div>
+                                </div>
+                                <div class="tabs__item">
+                                    <div class="tabs__description">
+                                        <div class="tabs__title">Брови и ресницы</div>
+                                        <div class="tabs__text">Короткие волосы</div>
+                                    </div>
+                                    <div class="tabs__coast">1200 ₽</div>
+                                </div>
+                                <div class="tabs__item">
+                                    <div class="tabs__description">
+                                        <div class="tabs__title">Брови и ресницы</div>
+                                        <div class="tabs__text">Короткие волосы</div>
+                                    </div>
+                                    <div class="tabs__coast">1200 ₽</div>
+                                </div>
+                                <div class="tabs__item">
+                                    <div class="tabs__description">
+                                        <div class="tabs__title">Брови и ресницы</div>
+                                        <div class="tabs__text">Короткие волосы</div>
+                                    </div>
+                                    <div class="tabs__coast">1200 ₽</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tabs">
+                            <div class="tabs__inner">
+                                <div class="tabs__item">
+                                    <div class="tabs__description">
+                                        <div class="tabs__title">Массаж</div>
+                                        <div class="tabs__text">Короткие волосы</div>
+                                    </div>
+                                    <div class="tabs__coast">1200 ₽</div>
+                                </div>
+                                <div class="tabs__item">
+                                    <div class="tabs__description">
+                                        <div class="tabs__title">Массаж</div>
+                                        <div class="tabs__text">Короткие волосы</div>
+                                    </div>
+                                    <div class="tabs__coast">1200 ₽</div>
+                                </div>
+                                <div class="tabs__item">
+                                    <div class="tabs__description">
+                                        <div class="tabs__title">Массаж</div>
+                                        <div class="tabs__text">Короткие волосы</div>
+                                    </div>
+                                    <div class="tabs__coast">1200 ₽</div>
+                                </div>
+                                <div class="tabs__item">
+                                    <div class="tabs__description">
+                                        <div class="tabs__title">Массаж</div>
+                                        <div class="tabs__text">Короткие волосы</div>
+                                    </div>
+                                    <div class="tabs__coast">1200 ₽</div>
+                                </div>
+                                <div class="tabs__item">
+                                    <div class="tabs__description">
+                                        <div class="tabs__title">Массаж</div>
+                                        <div class="tabs__text">Короткие волосы</div>
+                                    </div>
+                                    <div class="tabs__coast">1200 ₽</div>
+                                </div>
+                                <div class="tabs__item">
+                                    <div class="tabs__description">
+                                        <div class="tabs__title">Массаж</div>
+                                        <div class="tabs__text">Короткие волосы</div>
+                                    </div>
+                                    <div class="tabs__coast">1200 ₽</div>
+                                </div>
+                                <div class="tabs__item">
+                                    <div class="tabs__description">
+                                        <div class="tabs__title">Массаж</div>
+                                        <div class="tabs__text">Короткие волосы</div>
+                                    </div>
+                                    <div class="tabs__coast">1200 ₽</div>
+                                </div>
+                                <div class="tabs__item">
+                                    <div class="tabs__description">
+                                        <div class="tabs__title">Массаж</div>
+                                        <div class="tabs__text">Короткие волосы</div>
+                                    </div>
+                                    <div class="tabs__coast">1200 ₽</div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section> <!-- /service-price -->
@@ -321,7 +651,7 @@
             <section class="section section_gray">
                 <div class="container">
                     <div class="section__header section__header_paddingtop">
-                        <div class="section__title">Мастера</div>
+                        <div class="section__title" id="masters">Мастера</div>
                     </div>
                     <div class="section__inner">
                         <div class="masters">
@@ -377,58 +707,85 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
-                </div>
             </section> <!-- /masters -->
 
             <section class="section">
                 <div class="container">
                     <div class="section__header section__header_between">
-                        <div class="section__title">Наши работы</div>
-
+                        <div class="section__title" id="works">Наши работы</div>
                         <div class="section__carousel carousel-nav">
-                            <button class="carousel-nav__btn carousel-nav__btn_prev" type="button"></button>
-                            <button class="carousel-nav__btn carousel-nav__btn_next" type="button"></button>
+                            <div class="carousel-nav__btn carousel-nav__btn_prev  "></div>
+                            <div class="carousel-nav__btn carousel-nav__btn_next "></div>
                         </div>
                     </div>
                 </div>
 
                 <div class="section__inner section__inner_margintop">
-                    <div class="works">
-                        <div class="works__item">
-                            <img class="works__img" src="images/dest/works/1.jpg" alt="Наши работы">
-                            <div class="works__closer">
-                                <img class="works__loupe" src="images/dest/icon/closer.svg" alt="Увеличить">
-                                <div class="works__text">Увеличить</div>
-                            </div>
-                        </div>
-                        <div class="works__item">
-                            <img class="works__img" src="images/dest/works/2.jpg" alt="Наши работы">
-                            <div class="works__closer">
-                                <img class="works__loupe" src="images/dest/icon/closer.svg" alt="Увеличить">
-                                <div class="works__text">Увеличить</div>
-                            </div>
-                        </div>
-                        <div class="works__item">
-                            <img class="works__img" src="images/dest/works/3.jpg" alt="Наши работы">
-                            <div class="works__closer">
-                                <img class="works__loupe" src="images/dest/icon/closer.svg" alt="Увеличить">
-                                <div class="works__text">Увеличить</div>
-                            </div>
-                        </div>
-                        <div class="works__item">
-                            <img class="works__img" src="images/dest/works/4.jpg" alt="Наши работы">
-                            <div class="works__closer">
-                                <img class="works__loupe" src="images/dest/icon/closer.svg" alt="Увеличить">
-                                <div class="works__text">Увеличить</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="container">
+                    <div class="swiper ">
+                        <div class="swiper-wrapper ">
+                            <a class="swiper-slide works__item" href="images/dest/works/1.jpg" data-fancybox="gallery">
+                                <img class="works__img" src="images/dest/works/1.jpg" alt="Наши работы">
+                                <div class="works__closer">
+                                    <img class="works__loupe" src="images/dest/icon/closer.svg" alt="Увеличить">
+                                    <div class="works__text">Увеличить</div>
+                                </div>
+                            </a>
+                            <a class="swiper-slide works__item" href="images/dest/works/2.jpg" data-fancybox="gallery">
+                                <img class="works__img" src="images/dest/works/2.jpg" alt="Наши работы">
+                                <div class="works__closer">
+                                    <img class="works__loupe" src="images/dest/icon/closer.svg" alt="Увеличить">
+                                    <div class="works__text">Увеличить</div>
+                                </div>
 
+                            </a>
+                            <a class="swiper-slide works__item" href="images/dest/works/3.jpg" data-fancybox="gallery">
+                                <img class="works__img" src="images/dest/works/3.jpg" alt="Наши работы">
+                                <div class="works__closer">
+                                    <img class="works__loupe" src="images/dest/icon/closer.svg" alt="Увеличить">
+                                    <div class="works__text">Увеличить</div>
+                                </div>
+                            </a>
+                            <a class="swiper-slide works__item" href="images/dest/works/4.jpg" data-fancybox="gallery">
+                                <img class="works__img" src="images/dest/works/4.jpg" alt="Наши работы">
+                                <div class="works__closer">
+                                    <img class="works__loupe" src="images/dest/icon/closer.svg" alt="Увеличить">
+                                    <div class="works__text">Увеличить</div>
+                                </div>
+                            </a>
+                            <a class="swiper-slide works__item" href="images/dest/works/1.jpg" data-fancybox="gallery">
+                                <img class="works__img" src="images/dest/works/1.jpg" alt="Наши работы">
+                                <div class="works__closer">
+                                    <img class="works__loupe" src="images/dest/icon/closer.svg" alt="Увеличить">
+                                    <div class="works__text">Увеличить</div>
+                                </div>
+                            </a>
+                            <a class="swiper-slide works__item" href="images/dest/works/2.jpg" data-fancybox="gallery">
+                                <img class="works__img" src="images/dest/works/2.jpg" alt="Наши работы">
+                                <div class="works__closer">
+                                    <img class="works__loupe" src="images/dest/icon/closer.svg" alt="Увеличить">
+                                    <div class="works__text">Увеличить</div>
+                                </div>
+
+                            </a>
+                            <a class="swiper-slide works__item" href="images/dest/works/3.jpg" data-fancybox="gallery">
+                                <img class="works__img" src="images/dest/works/3.jpg" alt="Наши работы">
+                                <div class="works__closer">
+                                    <img class="works__loupe" src="images/dest/icon/closer.svg" alt="Увеличить">
+                                    <div class="works__text">Увеличить</div>
+                                </div>
+                            </a>
+                            <a class="swiper-slide works__item" href="images/dest/works/4.jpg" data-fancybox="gallery">
+                                <img class="works__img" src="images/dest/works/4.jpg" alt="Наши работы">
+                                <div class="works__closer">
+                                    <img class="works__loupe" src="images/dest/icon/closer.svg" alt="Увеличить">
+                                    <div class="works__text">Увеличить</div>
+                                </div>
+                            </a>
+                        </div>
                     </div>
                 </div>
+
             </section> <!-- /works -->
 
             <section class="section">
@@ -462,7 +819,7 @@
                 <div class="container">
                     <div class="section__inner section__inner_flex">
                         <div class="contacts">
-                            <div class="contacts__title">Контакты</div>
+                            <div class="contacts__title" id="contacts">Контакты</div>
                             <div class="contacts__inner">
                                 <div class="contacts__address">Томск, проспект Ленина, дом 13</div>
                                 <a class="contacts__tel" href="tel:84996861762">8 (499) 686-17-62</a>
@@ -486,7 +843,7 @@
                             </div>
                         </div>
 
-                        <form class="contacts__form form" action="/" method="post">
+                        <form class="contacts__form form" id="form">
                             <div class="form__inner">
                                 <div class="form__title">Быстрая запись</div>
                                 <div class="form__text">Наш менеджер перезвонит в течение нескольких минут, уточнит
@@ -494,9 +851,9 @@
                                     время.
                                 </div>
                                 <input class="form__name" type="text" placeholder="Ваше имя" name="name" required>
-                                <input class="form__tel" type="tel" placeholder="+7 (___) ___-__-__" name="phone"
+                                <input class="form__tel" type="tel" placeholder="+7 (___) ___-__-__" name="tel"
                                     required>
-                                <button class="button button_big">Записаться</button>
+                                <button class="button button_big" type="submit">Записаться</button>
                                 <div class="form__text">Нажимая на кнопку вы соглашаетесь с <a class="form__personal"
                                         href="#">обработкой
                                         персональных данных</a>
@@ -518,16 +875,16 @@
                     <nav class="footer__navigation navigation">
                         <ul class="navigation__list">
                             <li class="navigation__item">
-                                <a class="navigation__link navigation__link_thin" href="#">Услуги и цены</a>
+                                <a class="navigation__link navigation__link_thin" href="#services">Услуги и цены</a>
                             </li>
                             <li class="navigation__item">
-                                <a class="navigation__link navigation__link_thin" href="#">Мастера</a>
+                                <a class="navigation__link navigation__link_thin" href="#masters">Мастера</a>
                             </li>
                             <li class="navigation__item">
-                                <a class="navigation__link navigation__link_thin" href="#">Наши работы</a>
+                                <a class="navigation__link navigation__link_thin" href="#works">Наши работы</a>
                             </li>
                             <li class="navigation__item">
-                                <a class="navigation__link navigation__link_thin" href="#">Контакты</a>
+                                <a class="navigation__link navigation__link_thin" href="#contacts">Контакты</a>
                             </li>
                         </ul>
                     </nav>
@@ -535,6 +892,7 @@
             </div>
         </footer>
     </div>
+    <script src="js/main.min.js"></script>
 </body>
 
 </html>

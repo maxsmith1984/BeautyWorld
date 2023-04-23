@@ -4,8 +4,8 @@
   "description": "Салчак Максим",
   "main": "index.js",
   "scripts": {
-    "start": "gulp",
-    "build": "gulp build"
+    "start": "cross-env NODE_ENV=development gulp",
+    "build": "cross-env NODE_ENV=production gulp build"
   },
   "repository": {
     "type": "git",
@@ -18,19 +18,31 @@
   },
   "homepage": "https://github.com/maxsmith1984/BeautyWorld#readme",
   "devDependencies": {
+    "@babel/core": "^7.21.4",
+    "@babel/plugin-transform-runtime": "^7.21.4",
+    "@babel/preset-env": "^7.21.4",
+    "babel-loader": "^9.1.2",
     "browser-sync": "^2.29.1",
     "compress-images": "^2.0.5",
+    "cross-env": "^7.0.3",
+    "css-loader": "^6.7.3",
     "gifsicle": "^5.3.0",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^8.0.0",
     "gulp-clean": "^0.4.0",
     "gulp-clean-css": "^4.3.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-rename": "^2.0.0",
     "gulp-sass": "^5.1.0",
     "gulp-sourcemaps": "^3.0.0",
     "pngquant-bin": "^6.0.0",
-    "sass": "^1.60.0"
+    "sass": "^1.60.0",
+    "style-loader": "^3.3.2",
+    "webpack": "^5.78.0",
+    "webpack-stream": "^7.0.0"
   },
   "dependencies": {
-    "gulp-concat": "^2.6.1"
+    "@fancyapps/ui": "^5.0.16",
+    "swiper": "^9.2.0"
   }
 }

@@ -2,3 +2,4 @@
 /node_modules
 /src/css
 package-lock.json
+/src/js/main.min.js

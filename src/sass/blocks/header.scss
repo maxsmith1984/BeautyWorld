@@ -1,11 +1,3 @@
-.header {
-    width: 100%;
-    height: auto;
-
-    background: url('../images/dest/header/header-bg.jpg') center no-repeat;
-    background-size: cover;
-}
-
 .logo {
     font-weight: 700;
     font-size: 24px;
@@ -19,6 +11,13 @@
 }
 
 .header {
+    position: relative;
+
+    width: 100%;
+    height: auto;
+
+    background: url('../images/dest/header/header-bg.jpg') center no-repeat;
+    background-size: cover;
 
     &__top {
         position: relative;
@@ -162,9 +161,18 @@
             justify-content: space-between;
             gap: 20px 28px;
         }
+
+        &_mobile {
+            flex-direction: column;
+            align-items: center;
+            gap: 40px 0;
+
+            padding: 30px 0;
+        }
     }
 
-    &__link {
+    &__link,
+    .navigation__link-tab {
         font-weight: 500;
 
         transition: color .1s linear;
@@ -180,7 +188,33 @@
         &_active {
             color: #00BF78;
             border-bottom: 2px solid #00BF78;
+
+            &:focus {
+                outline: none;
+            }
         }
+
+        &_mobile {
+            font-size: 18px;
+            font-weight: 600;
+        }
+    }
+}
+
+.mobile-nav {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    z-index: 10;
+
+    width: 100%;
+
+    background: #fff;
+
+    transition: left .4s linear;
+
+    &_show {
+        left: 0;
     }
 }
 
