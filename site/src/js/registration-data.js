@@ -57,7 +57,6 @@ const registrationData = () => {
                 loader.setAttribute('hidden', '');
             }
         });
-
     };
 
     async function sendData(formData) {
@@ -82,11 +81,13 @@ const registrationData = () => {
                     return formData;
                 }
             })
+
             .then((response) => {
-                for (let [key, value] of response) {
+                for (const [key, value] of response) {
                     console.log(`${key} - ${value}`)
                 }
             })
+
             .catch(error => {
                 console.error('Ошибка отправки данных:', error);
             })
@@ -95,8 +96,6 @@ const registrationData = () => {
                 loading();
             });
     };
-
-
 }
 
 export default registrationData;
