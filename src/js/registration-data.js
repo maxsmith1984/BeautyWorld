@@ -3,8 +3,8 @@ const registrationData = () => {
 
     form.addEventListener('submit', function (event) {
         event.preventDefault();
-        let name = this.name.value;
-        let tel = this.tel.value;
+        const name = this.name.value;
+        const tel = this.tel.value;
         sendData(name, tel);
         form.reset();
     })
@@ -14,7 +14,7 @@ const registrationData = () => {
         formData.append('name', name)
         formData.append('tel', tel)
 
-        for (var value of formData.entries()) {
+        for (const value of formData.entries()) {
             console.log(value);
         }
     }

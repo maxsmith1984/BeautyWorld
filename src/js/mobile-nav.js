@@ -15,7 +15,7 @@ const mobileNav = () => {
 
     const smoothScrollLinks = document.querySelectorAll('.navigation__link');
 
-    for (let link of smoothScrollLinks) {
+    for (const link of smoothScrollLinks) {
         link.addEventListener('click', event => {
             event.preventDefault();
             const target = event.target;
