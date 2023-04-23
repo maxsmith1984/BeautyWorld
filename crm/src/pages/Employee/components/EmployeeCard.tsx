@@ -1,4 +1,4 @@
-import { EmployeeDto } from "../../common/dto";
+import { EmployeeDto } from "../../../common/dto";
 
 interface EmployeeCardProps {
     employee: EmployeeDto
@@ -13,7 +13,7 @@ export function EmployeeCard({ employee, onRemove }: EmployeeCardProps) {
 
             <div>{employee.surName}{employee.firstName}</div>
             <div>{employee.position}</div>
-            {/* <div>опыт работы 5 лет</div> */}
+
 
             <button onClick={onRemove}>Удалить</button>
         </div>
