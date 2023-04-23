@@ -1,3 +1,7 @@
 import { Fancybox } from "@fancyapps/ui";
 
-Fancybox.bind('[data-fancybox], [data-fancybox="gallery"]');
+const popup = () => {
+    Fancybox.bind('[data-fancybox], [data-fancybox="gallery"]');
+}
+
+export default popup

@@ -32,45 +32,6 @@ const registrationData = () => {
         return true;
     }
 
-    async function sendData(formData) {
-        const orderData = Object.fromEntries(formData.entries());
-        loading();
-        return await fetch('http://localhost:3005/api/orders', {
-            method: 'POST',
-            body: JSON.stringify(orderData),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Ошибка отправки данных');
-                } else if (response.ok) {
-
-                    successMessege();
-                    setTimeout(() => {
-                        Fancybox.close();
-                    }, 3000);
-                    return formData;
-                }
-            })
-            .then((response) => {
-                for (let [key, value] of response) {
-                    console.log(`${key} - ${value}`)
-                }
-            })
-            .catch(error => {
-                console.error('Ошибка отправки данных:', error);
-            })
-
-            .finally(() => {
-                loading();
-                setTimeout(() => {
-                    successMessege()
-                }, 2500)
-            });
-    };
-
     const successMessege = () => {
         const messeges = document.querySelectorAll('#success-messege');
 
@@ -98,6 +59,44 @@ const registrationData = () => {
         });
 
     };
+
+    async function sendData(formData) {
+        const orderData = Object.fromEntries(formData.entries());
+        loading();
+        return await fetch('http://localhost:3005/api/orders', {
+            method: 'POST',
+            body: JSON.stringify(orderData),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Ошибка отправки данных');
+                } else if (response.ok) {
+                    successMessege();
+                    setTimeout(() => {
+                        successMessege();
+                        Fancybox.close();
+                    }, 3000);
+                    return formData;
+                }
+            })
+            .then((response) => {
+                for (let [key, value] of response) {
+                    console.log(`${key} - ${value}`)
+                }
+            })
+            .catch(error => {
+                console.error('Ошибка отправки данных:', error);
+            })
+
+            .finally(() => {
+                loading();
+            });
+    };
+
+
 }
 
 export default registrationData;
