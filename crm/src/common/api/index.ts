@@ -1,3 +1,3 @@
-import EmployeesApi from './employeesApi';
+import EmployeesApi from './EmployeesApi';
 
 export { EmployeesApi };

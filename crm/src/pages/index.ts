@@ -1,0 +1,5 @@
+export * from './Customers/CustomersPage'
+export * from './Employee/EmployeePage'
+export * from './Login/LoginPage'
+export * from './Orders/OrdersPage'
+export * from './Services/ServicesPage'

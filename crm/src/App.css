@@ -1,0 +1,16 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.navigation__list {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+}
+
+.navigation__list li.active {
+    font-weight: bold;
+}
