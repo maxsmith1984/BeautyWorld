@@ -1,5 +1,5 @@
 export function OrdersPage() {
     return (
-        <h1>Заказы</h1>
+        <h1>Заявки</h1>
     )
 }
