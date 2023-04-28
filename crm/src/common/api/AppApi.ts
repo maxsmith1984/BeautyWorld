@@ -1,14 +1,21 @@
 import { AuthDataDto } from "../dto";
-import { HttpServise } from "./HttpServise";
+import { HttpService } from "../services/HttpService";
 
 interface TokenDto {
-    access_token: string
+    access_token: string;
 }
 
-class AppApi extends HttpServise {
-    login(data: AuthDataDto) {
-        return this.post<TokenDto>('login', data);
+class AppApi extends HttpService {
+    login(data: AuthDataDto): Promise<TokenDto> {
+        return this.post('login', data);
+    }
+
+    logout() {
+        return this.post('logout');
+    }
+
+    refresh() {
+        return this.get('refresh');
     }
 }
-
 export default new AppApi()

@@ -2,25 +2,26 @@ import { createContext, ReactNode, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AppApi from "../common/api/AppApi";
 import { AuthDataDto } from "../common/dto";
-
-const TOKEN_KEY = 'access_token';
+import TokenService from "../common/services/TokenService";
+import PubSub from "../common/services/PubSub";
 
 interface AuthContextValue {
-    isLoggedIn: Boolean;
+    isLoggedIn: boolean;
     login: (authData: AuthDataDto) => void;
     logout: () => void;
+    checkAuth: () => void;
 }
 
 const AuthContext = createContext<AuthContextValue>(null!);
 
 export function AuthProvider({ children }: { children: ReactNode }) {
-    const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+    const [isLoggedIn, setIsLoggedIn] = useState<boolean>(TokenService.isTokenValid());
     const navigate = useNavigate();
 
     const login = async (authData: AuthDataDto) => {
         try {
             const { access_token } = await AppApi.login(authData);
-            localStorage.setItem(TOKEN_KEY, access_token);
+            TokenService.setToken(access_token);
 
             setIsLoggedIn(true);
             navigate('/');
@@ -29,16 +30,36 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         }
     };
 
-    const logout = () => {
-        setIsLoggedIn(false);
-        localStorage.removeItem(TOKEN_KEY);
-        navigate('/Login');
+    const logout = async () => {
+        try {
+            await AppApi.logout();
+
+            setIsLoggedIn(false);
+            TokenService.removeToken();
+            navigate('/login');
+        } catch (e) {
+            console.error(e);
+        }
     };
+
+    const checkAuth = async () => {
+        try {
+            const response = await AppApi.refresh();
+            TokenService.setToken(response.access_token);
+            setIsLoggedIn(true);
+            navigate('/');
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    PubSub.on('auth', logout);
 
     const authContext = {
         isLoggedIn,
         login,
-        logout
+        logout,
+        checkAuth
     };
 
     return (
@@ -46,6 +67,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
             {children}
         </AuthContext.Provider>
     );
+
 }
 
 export const useAuth = () => useContext(AuthContext);

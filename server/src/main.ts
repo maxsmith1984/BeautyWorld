@@ -3,14 +3,21 @@ import { INestApplication } from '@nestjs/common';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { AppModule } from './app.module';
 import { API_PREFIX, PORT } from './shared/constants';
+const cors = require('cors');
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   app.enableCors();
+
+  app.use(cors({
+    origin: [`http://localhost:${PORT}`],
+    Credential: true
+  }));
+
   app.setGlobalPrefix(API_PREFIX);
 
-  initSwagger(app);  
+  initSwagger(app);
 
   await app.listen(PORT);
 }
