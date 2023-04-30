@@ -9,7 +9,7 @@ interface AuthContextValue {
     isLoggedIn: boolean;
     login: (authData: AuthDataDto) => void;
     logout: () => void;
-    checkAuth: () => void
+    checkAuth: () => void;
 }
 
 const AuthContext = createContext<AuthContextValue>(null!);
