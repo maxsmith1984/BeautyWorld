@@ -1,5 +1,7 @@
+import OrderTable from "./components/OrdersTable";
+
 export function OrdersPage() {
     return (
-        <h1>Заявки</h1>
+        <OrderTable />
     )
 }

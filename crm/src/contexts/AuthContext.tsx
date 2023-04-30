@@ -9,7 +9,7 @@ interface AuthContextValue {
     isLoggedIn: boolean;
     login: (authData: AuthDataDto) => void;
     logout: () => void;
-    checkAuth: () => void;
+    checkAuth: () => void
 }
 
 const AuthContext = createContext<AuthContextValue>(null!);
@@ -32,11 +32,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
     const logout = async () => {
         try {
-            await AppApi.logout();
+            // await AppApi.logout();
 
             setIsLoggedIn(false);
             TokenService.removeToken();
-            navigate('/login');
+            navigate('/Login');
         } catch (e) {
             console.error(e);
         }
@@ -44,9 +44,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
     const checkAuth = async () => {
         try {
-            const response = await AppApi.refresh();
-            TokenService.setToken(response.access_token);
-            setIsLoggedIn(true);
+            // const response = await AppApi.refresh();
+            // TokenService.setToken(response.access_token);
+            // setIsLoggedIn(true);
             navigate('/');
         } catch (error) {
             console.log(error);

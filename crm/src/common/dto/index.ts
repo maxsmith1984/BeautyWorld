@@ -1,2 +1,6 @@
 export * from './EmployeeDto'
 export * from './AuthDataDto'
+export * from './Oders/OrderDto'
+export * from './Oders/CreateOrderDto'
+export * from './Oders/UpdateOrderDto'
+export * from './ServicesDto'

@@ -5,7 +5,7 @@ import PubSub from './PubSub';
 
 const httpClient = axios.create({
     baseURL: API_PATH,
-    withCredentials: false
+    withCredentials: true
 });
 
 httpClient.interceptors.response.use(
@@ -19,6 +19,7 @@ httpClient.interceptors.response.use(
 
             try {
                 await axios.get(`${API_PATH}/refresh`, { withCredentials: true });
+
                 return httpClient.request(originalRequest);
             } catch (e) {
                 PubSub.emit('logout');
@@ -61,6 +62,13 @@ export class HttpService {
             { params, headers: this.baseHeaders }
         );
 
+        return response.data;
+    }
+
+    async patch<T>(path: string, id: number, data?: T, params?: Params,) {
+        const response = await httpClient.patch(`${this.baseApi}/${path}/${id}`, data,
+            { params, headers: this.baseHeaders }
+        );
         return response.data;
     }
 
