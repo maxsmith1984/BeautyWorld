@@ -1,4 +1,4 @@
-import { CreateOrderDto, OrderDto, UpdateOrderDto } from "../dto";
+import { CreateOrderDto, OrderDto, UpdateOrderDto, DeleteOrderDto } from "../dto";
 import { HttpService } from "../services/HttpService";
 
 class OrderApi extends HttpService {
@@ -14,10 +14,12 @@ class OrderApi extends HttpService {
         return this.post('')
     }
 
-    delete() { }
-
     update(UpdateOrderDto: UpdateOrderDto) {
         return this.patch('', UpdateOrderDto.customerId, UpdateOrderDto)
+    }
+
+    deleteOrder(DeleteOrderDto: DeleteOrderDto) {
+        return this.delete('', DeleteOrderDto.id)
     }
 }
 

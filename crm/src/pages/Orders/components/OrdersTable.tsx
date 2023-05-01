@@ -1,10 +1,12 @@
 import { useRef, useState, useEffect } from "react"
 
-import { Button, Table } from "antd";
-import { EditTwoTone } from '@ant-design/icons';
+import { Button, Table, Modal } from "antd";
+import { EditTwoTone, ExclamationCircleOutlined } from '@ant-design/icons';
 
-import { OrderApi } from "../../../common/api"
-import { OrderDto } from "../../../common/dto"
+import { OrderApi } from "../../../common/api";
+import { OrderDto } from "../../../common/dto";
+
+const { confirm } = Modal;
 
 const OrdersTable = () => {
 
@@ -16,7 +18,27 @@ const OrdersTable = () => {
     }, []);
 
     const removeOrder = (orderId: number) => {
-        setOrders(orders.filter(x => x.id !== orderId))
+        confirm({
+            title: 'Вы уверены, что хотите удалить этот заказ?',
+            icon: <ExclamationCircleOutlined />,
+            okText: 'Да',
+            cancelText: 'Отмена',
+            onOk: () => {
+                const orderNumber = { id: orderId };
+
+                setOrders(orders.filter(x => x.id !== orderId));
+                OrderApi.deleteOrder(orderNumber);
+            },
+
+        });
+    }
+
+    const formatDate = (createdDate: string): string => {
+        const date = new Date(createdDate);
+        const day = date.getDate().toString().padStart(2, '0');
+        const month = (date.getMonth() + 1).toString().padStart(2, '0');
+        const year = date.getFullYear().toString();
+        return `${day}.${month}.${year}`;
     }
 
     const columns = [
@@ -34,11 +56,23 @@ const OrdersTable = () => {
             title: 'Дата создания',
             dataIndex: 'createdDate',
             key: 'createdDate',
+            render: (createdDate: string) => formatDate(createdDate),
         },
         {
             title: 'Дата визита',
             dataIndex: 'visitDate',
             key: 'visitDate',
+            render: (createdDate: string) => formatDate(createdDate),
+        },
+        {
+            title: 'Мастер',
+            dataIndex: 'masterName',
+            key: 'masterName',
+        },
+        {
+            title: 'Услуга',
+            dataIndex: 'service',
+            key: 'service',
         },
         {
             title: 'Статус',
@@ -69,6 +103,8 @@ const OrdersTable = () => {
         visitDate: order.visitDate,
         status: order.status,
         finishStatus: order.finishStatus,
+        masterName: order.master.firstName,
+        service: order.service.name,
     }));
 
     return (

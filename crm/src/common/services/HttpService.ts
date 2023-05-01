@@ -66,8 +66,15 @@ export class HttpService {
     }
 
     async patch<T>(path: string, id: number, data?: T, params?: Params,) {
-        const response = await httpClient.patch(`${this.baseApi}/${path}/${id}`, data,
+        const response = await httpClient.patch(`${this.baseApi}/${path}${id}`, data,
             { params, headers: this.baseHeaders }
+        );
+        return response.data;
+    }
+
+    async delete<T>(path: string, id: number, data?: T) {
+        const response = await httpClient.delete(`${this.baseApi}/${path}${id}`,
+            { headers: this.baseHeaders }
         );
         return response.data;
     }
