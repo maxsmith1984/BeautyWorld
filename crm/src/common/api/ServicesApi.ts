@@ -5,7 +5,7 @@ class ServicesApi extends HttpService {
     constructor() {
         super('services');
     }
-    getAll(): Promise<ServicesDto[]> {
+    getServices(): Promise<ServicesDto[]> {
         return this.get('');
     }
 }

@@ -10,7 +10,7 @@ class OrderApi extends HttpService {
         return this.get('');
     }
 
-    create(CreateOrderDto: CreateOrderDto) {
+    createOrder(CreateOrderDto: CreateOrderDto) {
         return this.post('')
     }
 

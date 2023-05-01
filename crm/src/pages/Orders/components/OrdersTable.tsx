@@ -1,21 +1,31 @@
 import { useRef, useState, useEffect } from "react"
 
-import { Button, Table, Modal } from "antd";
+import { Button, Table, Modal, Form, DatePicker, Input } from "antd";
 import { EditTwoTone, ExclamationCircleOutlined } from '@ant-design/icons';
 
 import { OrderApi } from "../../../common/api";
 import { OrderDto } from "../../../common/dto";
+import CreateOrder from "./CreateOrder";
 
 const { confirm } = Modal;
 
 const OrdersTable = () => {
 
-    const [orders, setOrders] = useState<OrderDto[]>([])
+    const [orders, setOrders] = useState<OrderDto[]>([]);
     const ordersListRef = useRef<any>();
+    const [editOrder, setEditOrder] = useState(false);
 
     useEffect(() => {
         OrderApi.getOrder().then(setOrders);
     }, []);
+
+    const handleEditOrder = (orderId: number) => {
+        setEditOrder(true);
+    };
+
+    const update = () => {
+        //123
+    }
 
     const removeOrder = (orderId: number) => {
         confirm({
@@ -89,7 +99,7 @@ const OrdersTable = () => {
             key: 'actions',
             render: (order: any) =>
                 <div>
-                    <Button icon={<EditTwoTone />} />
+                    <Button icon={<EditTwoTone />} onClick={() => handleEditOrder(order.id)} />
                     <Button type="link" onClick={() => removeOrder(order.id)}>Удалить</Button>
                 </div>
         },
@@ -109,11 +119,37 @@ const OrdersTable = () => {
 
     return (
         <>
+            <CreateOrder />
             <div ref={ordersListRef}>
                 <Table columns={columns} dataSource={data} />
             </div>
-        </>
-    )
+
+            <Modal
+                title="Редактирование заявки"
+                open={editOrder}
+                onCancel={() => setEditOrder(false)}
+                footer={[
+                    <Button key="cancel" onClick={() => setEditOrder(false)}>
+                        Отмена
+                    </Button>,
+                    <Button key="save" type="primary" onClick={update}>
+                        Сохранить
+                    </Button>,
+                ]}>
+
+                <Form>
+                    <Form.Item label="Дата записи">
+                        <DatePicker />
+                    </Form.Item>
+                    <Form.Item label="Услуга">
+                        <Input />
+                    </Form.Item>
+                    <Form.Item label="Мастер">
+                        <Input />
+                    </Form.Item>
+                </Form>
+            </Modal>
+        </>)
 }
 
 export default OrdersTable
