@@ -1,6 +1,7 @@
 import { createContext, ReactNode, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AppApi from "../common/api/AppApi";
+import { message } from 'antd';
 import { AuthDataDto } from "../common/dto";
 import TokenService from "../common/services/TokenService";
 import PubSub from "../common/services/PubSub";
@@ -16,7 +17,16 @@ const AuthContext = createContext<AuthContextValue>(null!);
 
 export function AuthProvider({ children }: { children: ReactNode }) {
     const [isLoggedIn, setIsLoggedIn] = useState<boolean>(TokenService.isTokenValid());
+
     const navigate = useNavigate();
+    const [messageApi, contextHolder] = message.useMessage();
+
+    const error = () => {
+        messageApi.open({
+            type: 'error',
+            content: 'Неправильно введен Логин или Имя пользователя',
+        });
+    };
 
     const login = async (authData: AuthDataDto) => {
         try {
@@ -26,6 +36,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
             setIsLoggedIn(true);
             navigate('/');
         } catch (e) {
+            error();
             console.error(e);
         }
     };
@@ -64,6 +75,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
     return (
         <AuthContext.Provider value={authContext}>
+            {contextHolder}
             {children}
         </AuthContext.Provider>
     );

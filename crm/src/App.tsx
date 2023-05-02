@@ -52,7 +52,9 @@ function App() {
             </div>
         </Content>
 
+
         <Footer>© 2020 «Море красоты»</Footer>
+
     </>)
 }
 
