@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Button, ConfigProvider, DatePicker, DatePickerProps, Form, Input, Modal, Select } from "antd";
+import { Button, DatePicker, DatePickerProps, Form, Input, Modal, Select } from "antd";
 import { CreateOrderDto, EmployeeDto, ServicesDto } from "../../../common/dto";
 import { EmployeesApi, OrderApi, ServicesApi } from '../../../common/api';
 import './style/ComponentsOrderStyle.scss'
@@ -33,10 +33,6 @@ const CreateOrder = () => {
 
     const onChangeDate: DatePickerProps['onChange'] = (date, dateString) => {
         return setFormData({ ...formData, visitDate: dateString });
-    };
-
-    const validateMessages = {
-        required: `Заполните все поля`,
     };
 
     const onReset = () => {
