@@ -11,7 +11,7 @@ class OrderApi extends HttpService {
     }
 
     createOrder(CreateOrderDto: CreateOrderDto) {
-        return this.post('')
+        return this.post('', CreateOrderDto)
     }
 
     update(UpdateOrderDto: UpdateOrderDto) {

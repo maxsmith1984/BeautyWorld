@@ -43,6 +43,7 @@ export function AuthForm(props: AuthFormProps) {
                         </Form.Item>
 
                         <Button type="primary" onClick={handleSubmit}>Войти</Button>
+
                     </Form>
                 </div>
             </div>
