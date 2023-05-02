@@ -34,8 +34,8 @@ export function AuthForm(props: AuthFormProps) {
                     <Form ref={form} name="basic"
                         initialValues={{ remember: true }}
                         autoComplete="off"
-                        onFinish={handleSubmit}>
-
+                        onFinish={handleSubmit}
+                    >
                         <Form.Item name="Ваше имя" rules={[{ required: true }]}>
                             <Input id="name" type="text" value={userName} onChange={event => setUserName(event.target.value)} placeholder='Имя пользователя' />
                         </Form.Item>

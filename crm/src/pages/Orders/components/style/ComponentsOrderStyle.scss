@@ -4,4 +4,9 @@
 
         text-align: center;
     }
+
+    &__button-wraper {
+        display: flex;
+        justify-content: space-between;
+    }
 }
