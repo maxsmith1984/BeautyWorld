@@ -22,6 +22,10 @@ const OrdersTable = () => {
     const handleEditOrder = (orderId: number) => {
         setEditOrder(true);
     };
+    const addOrder = (order: OrderDto) => {
+        setOrders([order, ...orders]);
+
+    };
 
     const update = () => {
         //123
@@ -36,10 +40,9 @@ const OrdersTable = () => {
             onOk: () => {
                 const orderNumber = { id: orderId };
 
-                setOrders(orders.filter(x => x.id !== orderId));
-                OrderApi.deleteOrder(orderNumber);
+                setOrders(orders.filter(order => order.id !== orderId));
+                OrderApi.deleteOrder(orderNumber)
             },
-
         });
     }
 
@@ -119,10 +122,9 @@ const OrdersTable = () => {
 
     return (
         <>
-            <CreateOrder />
-            <div ref={ordersListRef}>
-                <Table columns={columns} dataSource={data} />
-            </div>
+            <CreateOrder addOrder={addOrder} />
+
+            <Table ref={ordersListRef} columns={columns} dataSource={data} />
 
             <Modal
                 title="Редактирование заявки"

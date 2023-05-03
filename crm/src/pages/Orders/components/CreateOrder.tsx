@@ -1,11 +1,15 @@
 import { useState, useEffect } from 'react';
 import { Button, DatePicker, DatePickerProps, Form, Input, Modal, Select } from "antd";
-import { CreateOrderDto, EmployeeDto, ServicesDto } from "../../../common/dto";
+import { CreateOrderDto, EmployeeDto, OrderDto, ServicesDto } from "../../../common/dto";
 import { EmployeesApi, OrderApi, ServicesApi } from '../../../common/api';
 import './style/ComponentsOrderStyle.scss'
 
+interface CreateOrderProps {
+    addOrder: (order: OrderDto) => void;
 
-const CreateOrder = () => {
+}
+
+const CreateOrder = ({ addOrder }: CreateOrderProps) => {
     const [createOrder, setCreateOrder] = useState(false);
 
     const [services, setServices] = useState<ServicesDto[]>([]);
@@ -26,7 +30,11 @@ const CreateOrder = () => {
     }, []);
 
     const handleFormSubmit = () => {
-        OrderApi.createOrder(formData);
+        OrderApi.createOrder(formData)
+            .then((response) => {
+                addOrder(response);
+            })
+
         setCreateOrder(false);
         onReset();
     }
@@ -48,11 +56,7 @@ const CreateOrder = () => {
             title="Создание заявки"
             open={createOrder}
             onCancel={() => setCreateOrder(false)}
-            footer={[
-
-
-
-            ]}>
+            footer={[]}>
             <Form form={form}
                 autoComplete="off"
                 onFinish={handleFormSubmit}

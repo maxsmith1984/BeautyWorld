@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useContext, useState } from "react";
+import { createContext, ReactNode, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AppApi from "../common/api/AppApi";
 import { message } from 'antd';
@@ -34,6 +34,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
             TokenService.setToken(access_token);
 
             setIsLoggedIn(true);
+
             navigate('/');
         } catch (e) {
             error();
@@ -57,8 +58,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         try {
             // const response = await AppApi.refresh();
             // TokenService.setToken(response.access_token);
-            // setIsLoggedIn(true);
-            navigate('/');
+            setIsLoggedIn(true);
+            // navigate('/');
         } catch (error) {
             console.log(error);
         }
