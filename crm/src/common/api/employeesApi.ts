@@ -10,4 +10,4 @@ class EmployeesApi extends HttpService {
     }
 }
 
-export default new EmployeesApi();
+export default new EmployeesApi;

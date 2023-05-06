@@ -3,6 +3,6 @@ export interface UpdateOrderDto {
     masterId: number,
     serviceId: number,
     visitDate: string,
-    status: string[],
-    finishStatus: string[]
+    status: string[] | string,
+    finishStatus: string[] | string
 }

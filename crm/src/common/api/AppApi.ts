@@ -14,9 +14,9 @@ class AppApi extends HttpService {
         return this.post('logout');
     }
 
-    // refresh() {
-    //     return this.get('refresh');
-    // }
+    refresh() {
+        return this.get('refresh');
+    }
 }
 
 export default new AppApi()

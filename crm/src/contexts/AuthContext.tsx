@@ -44,7 +44,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
     const logout = async () => {
         try {
-            // await AppApi.logout();
+            await AppApi.logout();
 
             setIsLoggedIn(false);
             TokenService.removeToken();
@@ -56,10 +56,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
     const checkAuth = async () => {
         try {
-            // const response = await AppApi.refresh();
-            // TokenService.setToken(response.access_token);
+            const response = await AppApi.refresh();
+            TokenService.setToken(response.access_token);
             setIsLoggedIn(true);
-            // navigate('/');
+            navigate('/');
         } catch (error) {
             console.log(error);
         }
