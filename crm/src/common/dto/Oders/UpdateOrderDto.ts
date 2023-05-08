@@ -3,6 +3,16 @@ export interface UpdateOrderDto {
     masterId: number,
     serviceId: number,
     visitDate: string,
-    status: string[] | string,
-    finishStatus: string[] | string
+    status: RecordStatusFinish,
+    finishStatus: RecordStatus
 }
+export enum RecordStatusFinish {
+    Success = 'Success',
+    Failed = 'Failed'
+}
+
+export enum RecordStatus {
+    Opened = 'Opened',
+    Closed = 'Closed'
+}
+

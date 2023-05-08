@@ -90,7 +90,7 @@ const CreateOrder = ({ addOrder }: CreateOrderProps) => {
                 </Form.Item>
 
                 <Form.Item name="visitDate" label="Дата визита" rules={[{ required: true, message: 'Введите дату визита' }]}>
-                    <DatePicker value={undefined} onChange={onChangeDate} />
+                    <DatePicker onChange={onChangeDate} />
                 </Form.Item>
                 <div className='create-order__button-wraper'>
                     <Button onClick={() => {
