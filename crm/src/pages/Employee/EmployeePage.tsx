@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState } from "react";
+import { Col, Row } from 'antd';
+
 import { EmployeesApi } from "../../common/api";
 import { EmployeeDto } from "../../common/dto";
 import { EmployeeCard } from "./components/EmployeeCard";
@@ -29,20 +31,21 @@ export function EmployeePage() {
         }))
     }
 
-    return (
-        <>
-            <EmployeeCreateForm onCreate={createEmployee} />
+    return (<>
+        <EmployeeCreateForm onCreate={createEmployee} />
 
-            {employees.length === 0 && <p>Нет данных</p>}
-
-            <div ref={employeesListRef} className='employees'>
+        {employees.length === 0 && <p>Нет данных</p>}
+        <div ref={employeesListRef}>
+            <Row justify="space-around" gutter={[24, 24]}>
                 {employees.map(employee =>
-                    <EmployeeCard
-                        onRemove={() => removeEmployee(employee.id)}
-                        key={employee.id}
-                        employee={employee}
-                    />)}
-            </div>
-        </>
-    )
+                    <Col key={employee.id}>
+                        <EmployeeCard
+                            onRemove={() => removeEmployee(employee.id)}
+                            employee={employee}
+                        />
+                    </Col>
+                )}
+            </Row>
+        </div>
+    </>)
 }

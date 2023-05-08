@@ -1,5 +1,5 @@
-import { FormEvent, useState } from "react";
-import { Button } from "../../../components/Button";
+import { Button, Form, Input } from "antd";
+import { useState } from "react";
 
 export interface EmployeeCreateFormData {
     name: string;
@@ -10,16 +10,28 @@ export function EmployeeCreateForm({ onCreate }: { onCreate: (data: EmployeeCrea
     const [name, setName] = useState('');
     const [lastName, setLastName] = useState('');
 
-    const handleForm = (event: FormEvent) => {
-        event.preventDefault();
+    const handleForm = () => {
         onCreate({ name, lastName });
     }
 
     return (
-        <form onSubmit={handleForm}>
-            <input value={name} onChange={e => setName(e.target.value)} name='name' placeholder='Имя' />
-            <input value={lastName} onChange={e => setLastName(e.target.value)} name='lastname' placeholder='Фамилия' />
-            <Button>Добавить</Button>
-        </form>
+        <Form
+            style={{ maxWidth: 300, marginTop: 20 }}
+            onFinish={handleForm}>
+            <Form.Item>
+
+                <Input value={name} onChange={e => setName(e.target.value)} name='name' placeholder='Имя' />
+            </Form.Item>
+
+            <Form.Item>
+                <Input value={lastName} onChange={e => setLastName(e.target.value)} name='lastname' placeholder='Фамилия' />
+            </Form.Item>
+
+            <Form.Item>
+                <Button type="primary" htmlType="submit" >
+                    Создать
+                </Button>
+            </Form.Item>
+        </Form>
     )
 };
