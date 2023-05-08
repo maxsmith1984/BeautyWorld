@@ -1,9 +1,10 @@
 import { useRef, useState, useEffect } from "react"
+import Highlighter from 'react-highlight-words';
 import dayjs from 'dayjs';
-import { Button, Table, Modal, Form, DatePicker, Select, DatePickerProps } from "antd";
-import { EditTwoTone, ExclamationCircleOutlined } from '@ant-design/icons';
 
-
+import { Button, Table, Modal, Form, DatePicker, Select, DatePickerProps, Input, Space, InputRef, TableProps } from "antd";
+import { EditTwoTone, ExclamationCircleOutlined, SearchOutlined } from '@ant-design/icons';
+import type { ColumnsType, FilterConfirmProps, FilterValue, ColumnType } from 'antd/es/table/interface';
 
 import { EmployeesApi, OrderApi, ServicesApi } from "../../../common/api";
 import { EmployeeDto, OrderDto, ServicesDto, UpdateOrderDto, RecordStatusFinish, RecordStatus } from "../../../common/dto";
@@ -11,6 +12,12 @@ import CreateOrder from "./CreateOrder";
 
 const { confirm } = Modal;
 
+interface DataType {
+    firstName: string,
+    status: string
+}
+
+type DataIndex = keyof DataType;
 
 const OrdersTable = () => {
     const ordersListRef = useRef<any>();
@@ -31,6 +38,10 @@ const OrdersTable = () => {
         finishStatus: RecordStatus.Opened,
     });
 
+    const [searchText, setSearchText] = useState('');
+    const [searchedColumn, setSearchedColumn] = useState('');
+    const searchInput = useRef<InputRef>(null);
+    const [filteredInfo, setFilteredInfo] = useState<Record<string, FilterValue | null>>({});
 
 
     useEffect(() => {
@@ -58,7 +69,6 @@ const OrdersTable = () => {
 
     const addOrder = (order: OrderDto) => {
         setOrders([order, ...orders]);
-
     };
 
     const updateOrder = (updateOrders: UpdateOrderDto) => {
@@ -91,7 +101,104 @@ const OrdersTable = () => {
         return `${day}-${month}-${year}`;
     }
 
-    const columns = [
+
+    const handleSearch = (
+        selectedKeys: string[],
+        confirm: (param?: FilterConfirmProps) => void,
+        dataIndex: DataIndex,
+    ) => {
+        confirm();
+        setSearchText(selectedKeys[0]);
+        setSearchedColumn(dataIndex);
+    };
+
+    const handleReset = (clearFilters: () => void) => {
+        clearFilters();
+        setSearchText('');
+    };
+
+    const getColumnSearchProps = (dataIndex: DataIndex): ColumnType<DataType> => ({
+        filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters, close }) => (
+            <div style={{ padding: 8 }} onKeyDown={(e) => e.stopPropagation()}>
+                <Input
+                    ref={searchInput}
+                    placeholder={`Search ${dataIndex}`}
+                    value={selectedKeys[0]}
+                    onChange={(e) => setSelectedKeys(e.target.value ? [e.target.value] : [])}
+                    onPressEnter={() => handleSearch(selectedKeys as string[], confirm, dataIndex)}
+                    style={{ marginBottom: 8, display: 'block' }}
+                />
+                <Space>
+                    <Button
+                        type="primary"
+                        onClick={() => handleSearch(selectedKeys as string[], confirm, dataIndex)}
+                        icon={<SearchOutlined />}
+                        size="small"
+                        style={{ width: 90 }}
+                    >
+                        Найти
+                    </Button>
+                    <Button
+                        onClick={() => clearFilters && handleReset(clearFilters)}
+                        size="small"
+                        style={{ width: 90 }}
+                    >
+                        Очистить
+                    </Button>
+                    <Button
+                        type="link"
+                        size="small"
+                        onClick={() => {
+                            confirm({ closeDropdown: false });
+                            setSearchText((selectedKeys as string[])[0]);
+                            setSearchedColumn(dataIndex);
+                        }}
+                    >
+                        Фильтр
+                    </Button>
+                    <Button
+                        type="link"
+                        size="small"
+                        onClick={() => {
+                            close();
+                        }}
+                    >
+                        Закрыть
+                    </Button>
+                </Space>
+            </div>
+        ),
+        filterIcon: (filtered: boolean) => (
+            <SearchOutlined style={{ color: filtered ? '#1890ff' : undefined }} />
+        ),
+        onFilter: (value, record) =>
+            record[dataIndex]
+                .toString()
+                .toLowerCase()
+                .includes((value as string).toLowerCase()),
+        onFilterDropdownOpenChange: (visible) => {
+            if (visible) {
+                setTimeout(() => searchInput.current?.select(), 100);
+            }
+        },
+        render: (text) =>
+            searchedColumn === dataIndex ? (
+                <Highlighter
+                    highlightStyle={{ backgroundColor: '#ffc069', padding: 0 }}
+                    searchWords={[searchText]}
+                    autoEscape
+                    textToHighlight={text ? text.toString() : ''}
+                />
+            ) : (
+                text
+            ),
+    });
+
+    const handleChange: TableProps<DataType>['onChange'] = (pagination, filters) => {
+        setFilteredInfo(filters);
+    };
+
+    const columns: ColumnsType<DataType> = [
         {
             title: 'Номер',
             dataIndex: 'id',
@@ -101,6 +208,7 @@ const OrdersTable = () => {
             title: 'Имя',
             dataIndex: 'firstName',
             key: 'firstName',
+            ...getColumnSearchProps('firstName'),
         },
         {
             title: 'Дата создания',
@@ -128,6 +236,11 @@ const OrdersTable = () => {
             title: 'Статус',
             dataIndex: 'status',
             key: 'status',
+            filters: [
+                { text: 'Opened', value: 'Opened' },
+                { text: 'Closed', value: 'Closed' },
+            ],
+            onFilter: (value: any, record) => record.status.includes(value),
         },
         {
             title: 'Заявка',
@@ -173,8 +286,8 @@ const OrdersTable = () => {
         <>
             <CreateOrder addOrder={addOrder} />
 
-            <Table ref={ordersListRef} columns={columns} dataSource={data} />
-            {editingOrder.status}
+            <Table ref={ordersListRef} columns={columns} dataSource={data} onChange={handleChange} />
+
             <Modal
                 title="Редактирование заявки"
                 open={editOrder}
@@ -182,14 +295,12 @@ const OrdersTable = () => {
                 footer={[]}>
 
                 <Form
-
                     autoComplete="off"
                     onFinish={updateOrder}
                     fields={fields}
                 >
 
                     <Form.Item name="masterId" label="Мастер" rules={[{ required: true, message: 'Выберите мастера' }]}>
-
                         <Select onChange={(value) => setEditingOrder({ ...editingOrder, masterId: value })}>
                             {masters.map((master) => (
                                 <Select.Option key={master.id} value={master.id}  >
