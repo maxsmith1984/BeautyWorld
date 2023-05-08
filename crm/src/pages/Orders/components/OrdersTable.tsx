@@ -1,10 +1,10 @@
 import { useRef, useState, useEffect } from "react"
 import Highlighter from 'react-highlight-words';
 import dayjs from 'dayjs';
-
+import moment from 'moment';
 import { Button, Table, Modal, Form, DatePicker, Select, DatePickerProps, Input, Space, InputRef, TableProps } from "antd";
 import { EditTwoTone, ExclamationCircleOutlined, SearchOutlined } from '@ant-design/icons';
-import type { ColumnsType, FilterConfirmProps, FilterValue, ColumnType } from 'antd/es/table/interface';
+import type { ColumnsType, FilterConfirmProps, FilterValue, ColumnType, SorterResult } from 'antd/es/table/interface';
 
 import { EmployeesApi, OrderApi, ServicesApi } from "../../../common/api";
 import { EmployeeDto, OrderDto, ServicesDto, UpdateOrderDto, RecordStatusFinish, RecordStatus } from "../../../common/dto";
@@ -13,8 +13,10 @@ import CreateOrder from "./CreateOrder";
 const { confirm } = Modal;
 
 interface DataType {
-    firstName: string,
-    status: string
+    fullName: string,
+    status: string,
+    createdDate: string,
+    visitDate: string
 }
 
 type DataIndex = keyof DataType;
@@ -41,8 +43,8 @@ const OrdersTable = () => {
     const [searchText, setSearchText] = useState('');
     const [searchedColumn, setSearchedColumn] = useState('');
     const searchInput = useRef<InputRef>(null);
-    const [filteredInfo, setFilteredInfo] = useState<Record<string, FilterValue | null>>({});
-
+    const [, setFilteredInfo] = useState<Record<string, FilterValue | null>>({});
+    const [sortedInfo, setSortedInfo] = useState<SorterResult<DataType>>({});
 
     useEffect(() => {
         OrderApi.getOrder().then(setOrders);
@@ -194,33 +196,49 @@ const OrdersTable = () => {
             ),
     });
 
-    const handleChange: TableProps<DataType>['onChange'] = (pagination, filters) => {
+    const handleChange: TableProps<DataType>['onChange'] = (pagination, filters, sorter) => {
         setFilteredInfo(filters);
+        setSortedInfo(sorter as SorterResult<DataType>);
     };
 
     const columns: ColumnsType<DataType> = [
         {
-            title: 'Номер',
+            title: '№',
             dataIndex: 'id',
             key: 'id',
+            width: 60,
         },
         {
             title: 'Имя',
-            dataIndex: 'firstName',
-            key: 'firstName',
-            ...getColumnSearchProps('firstName'),
+            dataIndex: 'fullName',
+            key: 'fullName',
+            ...getColumnSearchProps('fullName'),
+        },
+        {
+            title: 'Номер телефона',
+            dataIndex: 'phone',
+            key: 'phone',
+            width: 160
         },
         {
             title: 'Дата создания',
             dataIndex: 'createdDate',
             key: 'createdDate',
+            width: 120,
             render: (createdDate: string) => formatDate(createdDate),
+            sorter: (a, b) => moment(a.createdDate).unix() - moment(b.createdDate).unix(),
+            sortOrder: sortedInfo.columnKey === 'createdDate' ? sortedInfo.order : null,
+            ellipsis: true,
         },
         {
             title: 'Дата визита',
             dataIndex: 'visitDate',
             key: 'visitDate',
-            render: (createdDate: string) => formatDate(createdDate),
+            width: 120,
+            render: (visitDate: string) => formatDate(visitDate),
+            sorter: (a, b) => moment(a.visitDate).unix() - moment(b.visitDate).unix(),
+            sortOrder: sortedInfo.columnKey === 'visitDate' ? sortedInfo.order : null,
+            ellipsis: true,
         },
         {
             title: 'Мастер',
@@ -231,6 +249,7 @@ const OrdersTable = () => {
             title: 'Услуга',
             dataIndex: 'service',
             key: 'service',
+            width: 140
         },
         {
             title: 'Статус',
@@ -250,8 +269,9 @@ const OrdersTable = () => {
         {
             title: 'Действия',
             key: 'actions',
+            width: 100,
             render: (order: any) =>
-                <div>
+                <div className="action__button">
                     <Button icon={<EditTwoTone />} onClick={() => handleEditOrder(order.id)} />
                     <Button type="link" onClick={() => removeOrder(order.id)}>Удалить</Button>
                 </div>
@@ -261,7 +281,8 @@ const OrdersTable = () => {
     const data = orders.map(order => ({
         key: order.id,
         id: order.id,
-        firstName: order.customer.firstName,
+        fullName: order.customer.fullName,
+        phone: order.customer.phone,
         createdDate: order.createdDate,
         visitDate: order.visitDate,
         status: order.status,
