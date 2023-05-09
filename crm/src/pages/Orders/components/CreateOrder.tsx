@@ -6,7 +6,6 @@ import './style/ComponentsOrderStyle.scss'
 
 interface CreateOrderProps {
     addOrder: (order: OrderDto) => void;
-
 }
 
 const CreateOrder = ({ addOrder }: CreateOrderProps) => {

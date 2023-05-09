@@ -1,14 +1,15 @@
 import { useRef, useState, useEffect } from "react"
 import Highlighter from 'react-highlight-words';
-import dayjs from 'dayjs';
+
 import moment from 'moment';
-import { Button, Table, Modal, Form, DatePicker, Select, DatePickerProps, Input, Space, InputRef, TableProps } from "antd";
+import { Button, Table, Modal, DatePickerProps, Input, Space, InputRef, TableProps } from "antd";
 import { EditTwoTone, ExclamationCircleOutlined, SearchOutlined } from '@ant-design/icons';
 import type { ColumnsType, FilterConfirmProps, FilterValue, ColumnType, SorterResult } from 'antd/es/table/interface';
 
-import { EmployeesApi, OrderApi, ServicesApi } from "../../../common/api";
-import { EmployeeDto, OrderDto, ServicesDto, UpdateOrderDto, RecordStatusFinish, RecordStatus } from "../../../common/dto";
+import { OrderApi, } from "../../../common/api";
+import { OrderDto, UpdateOrderDto, RecordStatusFinish, RecordStatus } from "../../../common/dto";
 import CreateOrder from "./CreateOrder";
+import EditOrder from "./EditOrder";
 
 const { confirm } = Modal;
 
@@ -24,13 +25,8 @@ type DataIndex = keyof DataType;
 const OrdersTable = () => {
     const ordersListRef = useRef<any>();
 
-    const [services, setServices] = useState<ServicesDto[]>([]);
-    const [masters, setMasters] = useState<EmployeeDto[]>([]);
-
     const [orders, setOrders] = useState<OrderDto[]>([]);
-
     const [editOrder, setEditOrder] = useState(false);
-
     const [editingOrder, setEditingOrder] = useState<UpdateOrderDto>({
         customerId: 0,
         masterId: 0,
@@ -48,10 +44,8 @@ const OrdersTable = () => {
 
     useEffect(() => {
         OrderApi.getOrder().then(setOrders);
-        ServicesApi.getServices().then(setServices);
-        EmployeesApi.getAll().then(setMasters);
-    }, []);
 
+    }, []);
 
     const handleEditOrder = (orderId: number,) => {
         const orderToEdit = orders.find((order) => order.id === orderId);
@@ -73,7 +67,7 @@ const OrdersTable = () => {
         setOrders([order, ...orders]);
     };
 
-    const updateOrder = (updateOrders: UpdateOrderDto) => {
+    const updateOrder = () => {
         const updatedOrder = { ...editingOrder, ...FormData };
         console.log(updatedOrder)
         // OrderApi.updateOrder(updatedOrder)
@@ -102,7 +96,6 @@ const OrdersTable = () => {
         const year = date.getFullYear().toString();
         return `${day}-${month}-${year}`;
     }
-
 
     const handleSearch = (
         selectedKeys: string[],
@@ -291,13 +284,7 @@ const OrdersTable = () => {
         service: order.service.name,
     }));
 
-    const fields = [
-        { "name": ["masterId"], "value": editingOrder.masterId },
-        { "name": ["serviceId"], "value": editingOrder.serviceId },
-        { "name": ["visitDate"], "value": editingOrder.visitDate ? dayjs(editingOrder.visitDate) : null, },
-        { "name": ["status"], "value": editingOrder.status },
-        { "name": ["finishStatus"], "value": editingOrder.finishStatus },
-    ]
+
 
     const updateVisitDate: DatePickerProps['onChange'] = (date, dateString) => {
         return setEditingOrder({ ...editingOrder, visitDate: dateString })
@@ -309,74 +296,14 @@ const OrdersTable = () => {
 
             <Table ref={ordersListRef} columns={columns} dataSource={data} onChange={handleChange} />
 
-            <Modal
-                title="Редактирование заявки"
-                open={editOrder}
-                onCancel={() => setEditOrder(false)}
-                footer={[]}>
-
-                <Form
-                    autoComplete="off"
-                    onFinish={updateOrder}
-                    fields={fields}
-                >
-
-                    <Form.Item name="masterId" label="Мастер" rules={[{ required: true, message: 'Выберите мастера' }]}>
-                        <Select onChange={(value) => setEditingOrder({ ...editingOrder, masterId: value })}>
-                            {masters.map((master) => (
-                                <Select.Option key={master.id} value={master.id}  >
-                                    {master.fullName}
-                                </Select.Option>
-                            ))}
-                        </Select>
-                    </Form.Item>
-
-                    <Form.Item name="serviceId" label="Услуга" rules={[{ required: true, message: 'Выберите услугу' }]}>
-                        <Select onChange={(value) => setEditingOrder({ ...editingOrder, serviceId: value })}>
-                            {services.map((service) => (
-                                <Select.Option key={service.id} value={service.id}>
-                                    {service.name}
-                                </Select.Option>
-                            ))}
-                        </Select>
-                    </Form.Item>
-
-                    <Form.Item name="visitDate" label="Дата визита" rules={[{ required: true, message: 'Введите дату визита' }]}>
-                        <DatePicker onChange={updateVisitDate} />
-                    </Form.Item>
-
-                    <Form.Item name="status" label="Статус"  >
-                        <Select onChange={(value) => setEditingOrder({ ...editingOrder, status: value })}>
-                            <Select.Option key="Opened">
-                                Opened
-                            </Select.Option>
-                            <Select.Option key="Closed">
-                                Closed
-                            </Select.Option>
-                        </Select>
-                    </Form.Item>
-                    <Form.Item name="finishStatus" label="Заявка"  >
-                        <Select onChange={(value) => setEditingOrder({ ...editingOrder, finishStatus: value })}>
-                            <Select.Option value="Failed" key="Failed">
-                                Failed
-                            </Select.Option>
-                            <Select.Option value="Success" key="Success">
-                                Success
-                            </Select.Option>
-                        </Select>
-                    </Form.Item>
-
-                    <div className='create-order__button-wraper'>
-                        <Button key="cancel" onClick={() => {
-                            setEditOrder(false);
-                        }}>Отмена
-                        </Button>
-                        <Button key="edit" type="primary" htmlType="submit" >
-                            Подствердить изменения
-                        </Button>
-                    </div>
-                </Form>
-            </Modal>
+            <EditOrder
+                editOrder={editOrder}
+                setEditOrder={setEditOrder}
+                updateOrder={updateOrder}
+                editingOrder={editingOrder}
+                setEditingOrder={setEditingOrder}
+                updateVisitDate={updateVisitDate}
+            />
         </>)
 }
 
