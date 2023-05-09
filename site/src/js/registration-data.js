@@ -1,4 +1,4 @@
-import { Fancybox } from "@fancyapps/ui";
+import { Fancybox } from '@fancyapps/ui';
 const registrationData = () => {
     const forms = document.querySelectorAll('[data-form]');
 
@@ -11,16 +11,16 @@ const registrationData = () => {
                     const formData = new FormData(this);
                     sendData(formData);
                     form.reset();
-                };
+                }
 
             } else if (this.dataset.form === 'form2') {
-                const { name, phone, employee, service, date } = this.elements;
+                const { name, phone } = this.elements;
                 if (isFormValid(name, phone)) {
                     const formData = new FormData(this);
                     sendData(formData);
                     form.reset();
-                };
-            };
+                }
+            }
         });
     });
 
@@ -95,7 +95,7 @@ const registrationData = () => {
             .finally(() => {
                 loading();
             });
-    };
+    }
 }
 
 export default registrationData;
