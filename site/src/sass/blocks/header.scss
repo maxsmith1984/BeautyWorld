@@ -1,0 +1,319 @@
+.logo {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 28px;
+
+    transition: transform .1s linear;
+
+    &:hover {
+        transform: scale(1.05);
+    }
+}
+
+.header {
+    position: relative;
+
+    width: 100%;
+    height: auto;
+
+    background: url('../images/dest/header/header-bg.jpg') center no-repeat;
+    background-size: cover;
+
+    &__top {
+        position: relative;
+        z-index: 2;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+
+        padding-top: 30px;
+
+        @include breakpoint($phones) {
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+
+    &__title {
+        min-width: fit-content;
+
+        @include breakpoint($small-devices2) {
+            margin-left: 50px;
+        }
+
+        @include breakpoint($phones) {
+            margin-left: 0;
+        }
+    }
+
+    &__navigation {
+        @include breakpoint($small-devices2) {
+            display: none;
+        }
+    }
+
+    &__contact {
+        min-width: fit-content;
+        text-align: right;
+
+        @include breakpoint($phones) {
+            margin-top: 15px;
+
+            text-align: center;
+        }
+    }
+
+    &__content {
+        position: relative;
+
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+
+        padding: 120px 0 130px;
+
+        @include breakpoint($small-devices2) {
+            flex-direction: column;
+
+            text-align: center;
+        }
+
+        @include breakpoint($phones) {
+            padding: 60px 0;
+        }
+    }
+
+    &__preview {
+        position: relative;
+        z-index: 2;
+
+        width: 60%;
+
+        @include breakpoint($small-devices) {
+            width: 70%;
+        }
+
+        @include breakpoint($small-devices2) {
+            width: 90%;
+            margin: 0 auto;
+        }
+    }
+
+    &__model {
+        position: absolute;
+        bottom: 0;
+        right: 80px;
+
+        overflow: hidden;
+
+        @include breakpoint($medium-devices) {
+            opacity: .55;
+        }
+
+        @include breakpoint($small-devices2) {
+            display: none;
+        }
+
+        &::before {
+            position: absolute;
+            bottom: -110px;
+            right: 0;
+            z-index: 0;
+
+            display: block;
+            width: 472px;
+            height: 472px;
+
+            background-color: #FB9475;
+            border-radius: 50%;
+
+            content: "";
+        }
+    }
+
+    &__social {
+        width: 40%;
+        margin-bottom: 90px;
+
+        text-align: right;
+
+        @include breakpoint($small-devices) {
+            width: 30%;
+        }
+
+        @include breakpoint($small-devices2) {
+            width: 100%;
+            margin: 0 auto;
+        }
+    }
+}
+
+.navigation {
+
+    &__list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px 28px;
+
+        @include breakpoint($small-phones) {
+            justify-content: space-between;
+            gap: 20px 28px;
+        }
+
+        &_mobile {
+            flex-direction: column;
+            align-items: center;
+            gap: 40px 0;
+
+            padding: 30px 0;
+        }
+    }
+
+    &__link,
+    .navigation__link-tab {
+        font-weight: 500;
+
+        transition: color .1s linear;
+
+        &:hover {
+            color: #00BF78
+        }
+
+        &_thin {
+            font-weight: 400;
+        }
+
+        &_active {
+            color: #00BF78;
+            border-bottom: 2px solid #00BF78;
+
+            &:focus {
+                outline: none;
+            }
+        }
+
+        &_mobile {
+            font-size: 18px;
+            font-weight: 600;
+        }
+    }
+}
+
+.mobile-nav {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    z-index: 10;
+
+    width: 100%;
+    height: 100vh;
+
+    background: #fff;
+
+    transition: left .4s linear;
+
+    &_show {
+        left: 0;
+    }
+}
+
+.header-phone {
+
+    &__number {
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 14px;
+
+        &:hover {
+            text-shadow: 0px 0px 1px #000;
+        }
+    }
+
+    &__text {
+        margin-top: 6px;
+
+        font-size: 11px;
+        line-height: 14px;
+    }
+}
+
+.preview {
+
+    &__title {
+        margin-bottom: 17px;
+
+        font-weight: 600;
+        font-size: 48px;
+        line-height: 58px;
+
+        @include breakpoint($phones) {
+            font-size: 35px;
+            line-height: 38px
+        }
+    }
+
+    &__text {
+        margin-bottom: 59px;
+
+        font-size: 20px;
+        line-height: 24px;
+    }
+
+}
+
+.model {
+
+    &__photo {
+        position: relative;
+        z-index: 1;
+
+        display: block;
+        width: 524px;
+        height: auto;
+    }
+}
+
+.social {
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+
+        @include breakpoint($small-devices2) {
+            flex-direction: row;
+            justify-content: center;
+        }
+
+        &_inline {
+            flex-direction: row;
+            gap: 0 24px;
+        }
+    }
+
+    &__link {
+        margin-bottom: 16px;
+
+        @include breakpoint($small-devices2) {
+            margin: 50px 15px 0;
+        }
+
+        &_inline {
+            margin: 0;
+            margin-bottom: 0;
+        }
+    }
+
+    &__item {
+        display: inline-block;
+        width: 28px;
+        height: auto;
+
+        transition: opacity .1s linear;
+
+        &:hover {
+            opacity: .8;
+        }
+    }
+}

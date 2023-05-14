@@ -1,0 +1,64 @@
+@use 'swiper/swiper-bundle.css';
+@use "@fancyapps/ui/dist/fancybox/fancybox.css";
+
+@import 'libs/reset.scss';
+@import 'sizes.scss';
+@import 'mixins.scss';
+
+@import 'fonts.scss';
+
+@import 'blocks/header.scss';
+@import 'blocks/burger.scss';
+@import 'blocks/button.scss';
+@import 'blocks/section.scss';
+@import 'blocks/footer.scss';
+@import 'blocks/form.scss';
+
+html {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Montserrat", "Arial", sans-serif;
+    font-weight: 400;
+
+    font-size: 14px;
+    color: #333333;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+input {
+    display: block;
+}
+
+input.error {
+    border: 1px solid #ff0000;
+}
+
+label.error {
+    color: #ff0000;
+    font-weight: normal;
+}
+
+.page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    width: 100%;
+    max-width: 1110px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
