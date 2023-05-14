@@ -3,14 +3,33 @@ import { INestApplication } from '@nestjs/common';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { AppModule } from './app.module';
 import { API_PREFIX, PORT } from './shared/constants';
+import * as cookieParser from 'cookie-parser';
+import * as session from 'express-session';
+import * as passport from 'passport';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  app.enableCors();
-  app.setGlobalPrefix(API_PREFIX);
+  app.enableCors({
+    origin: 'http://localhost:3000',
+    credentials: true
+  });
 
-  initSwagger(app);  
+  app.setGlobalPrefix(API_PREFIX);
+  app.use(cookieParser());
+
+  app.use(
+    session({
+      secret: 'secret',
+      resave: false,
+      saveUninitialized: true,
+    }),
+  );
+
+  app.use(passport.initialize());
+  app.use(passport.session());
+
+  initSwagger(app);
 
   await app.listen(PORT);
 }

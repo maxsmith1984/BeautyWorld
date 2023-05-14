@@ -1,0 +1,16 @@
+.create-order {
+    &__wrapper {
+        padding: 20px 0;
+
+        text-align: center;
+    }
+
+    &__button-wraper {
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+.action__button {
+    text-align: center;
+}

@@ -11,14 +11,13 @@ const validation = () => {
             },
             messages: {
                 name: {
-                    required: "Введите Ваше имя",
-                    minlength: "Введите не менее 2-х символов"
+                    required: 'Введите Ваше имя',
+                    minlength: 'Введите не менее 2-х символов'
                 },
                 phone: {
-                    required: "Введите Ваш номер телефона",
+                    required: 'Введите Ваш номер телефона',
                 }
             },
-
         });
     });
 
@@ -33,11 +32,11 @@ const validation = () => {
             },
             messages: {
                 name: {
-                    required: "Введите Ваше имя",
-                    minlength: "Введите не менее 2-х символов"
+                    required: 'Введите Ваше имя',
+                    minlength: 'Введите не менее 2-х символов'
                 },
                 phone: {
-                    required: "Введите Ваш номер телефона",
+                    required: 'Введите Ваш номер телефона',
                 }
             },
 

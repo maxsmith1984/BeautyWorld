@@ -1,38 +1,59 @@
+import { useEffect } from 'react';
+import { Link, Navigate, Outlet, useLocation } from 'react-router-dom';
 import './App.css';
-import { Routes, Route, Link } from 'react-router-dom';
-import { Layout } from 'antd';
-import { HomePage } from './pages/Home';
-import { LoginPage } from './pages/Login';
-import { OrdersPage } from './pages/Orders';
-import { EmployeePage } from './pages/Employee/EmployeePage';
-import { ServicesPage } from './pages/Services';
-import { CustomersPage } from './pages/Customers';
-const { Header, Content } = Layout;
+
+import { Layout, Button } from 'antd';
+import { useAuth } from './contexts/AuthContext';
+
+const { Header, Content, Footer } = Layout;
 
 function App() {
-    return (
-        <>
-            <Header>
-                <Link to="/">Домашняя Страница</Link>
-                <Link to="/Login">Логин</Link>
-                <Link to="/Orders">Заказы</Link>
-                <Link to="/Employee">Сотрудники</Link>
-                <Link to="/Services">Услуги</Link>
-                <Link to="/Customers">Клиенты</Link>
-            </Header>
-            <Routes>
-                <Route path='/' element={<HomePage />}></Route>
-                <Route path='/Login' element={<LoginPage />}></Route>
-                <Route path='/Orders' element={<OrdersPage />}></Route>
-                <Route path='/Employee' element={<EmployeePage />}></Route>
-                <Route path='/Services' element={<ServicesPage />}></Route>
-                <Route path='/Customers' element={<CustomersPage />}></Route>
-            </Routes>
-            <Content>
-                content
-            </Content>
-        </>
-    )
+    const { isLoggedIn, logout, checkAuth } = useAuth();
+    const location = useLocation();
+
+    useEffect(() => {
+        checkAuth();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
+    if (!isLoggedIn) {
+        return <Navigate to='/Login' />
+    }
+
+    return (<>
+        {isLoggedIn && (
+            <Header className='header'>
+                <nav className="navigation">
+                    <ul className="navigation__list">
+                        <li className={location.pathname === '/' ? 'active' : undefined}>
+                            <Link to="/">Заявки</Link>
+                        </li>
+                        <li className={location.pathname === '/Customers' ? 'active' : undefined}>
+                            <Link to="/Customers">Клиенты</Link>
+                        </li>
+                        <li className={location.pathname === '/Employee' ? 'active' : undefined}>
+                            <Link to="/Employee">Сотрудники</Link>
+                        </li>
+                        <li className={location.pathname === '/Services' ? 'active' : undefined}>
+                            <Link to="/Services">Услуги</Link>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div>
+                    <Button type="primary" onClick={logout}>Выход</Button>
+                </div>
+            </Header >
+        )}
+
+        <Content>
+            <div className='container'>
+                <Outlet />
+            </div>
+        </Content>
+
+        <Footer>© 2020 «Море красоты»</Footer>
+    </>)
 }
 
 export default App;

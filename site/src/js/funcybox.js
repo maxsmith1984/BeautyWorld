@@ -1,4 +1,4 @@
-import { Fancybox } from "@fancyapps/ui";
+import { Fancybox } from '@fancyapps/ui';
 
 const popup = () => {
     Fancybox.bind('[data-fancybox], [data-fancybox="gallery"]');
